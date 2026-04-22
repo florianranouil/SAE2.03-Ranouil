@@ -15,7 +15,7 @@
  */
 define("HOST", "localhost");
 define("DBNAME", "ranouil8");
-define("DBLOGIN", "ranouil8");
+define("DBLOGIN", "ranouil");
 define("DBPWD", "ranouil8");
 
 
