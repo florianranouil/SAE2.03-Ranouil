@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./css/base.css" />
     <link rel="stylesheet" href="./component/NavBar/style.css" />
+    <link rel="stylesheet" href="./component/MovieCategory/style.css" />
     <link rel="stylesheet" href="./component/section1/style.css" />
   </head>
 
@@ -17,7 +18,7 @@
     <script type="module">
       import { NavBar } from "./component/NavBar/script.js";
       import { DataMovie } from "./data/dataMovie.js";
-      import { Movie } from "./component/Movie/script.js";
+      import { MovieCategory } from "./component/MovieCategory/script.js";
       import { MovieDetail } from "./component/MovieDetail/script.js";
 
       window.C = {};
@@ -43,8 +44,8 @@
 
       C.loadMovies = async function () {
         try {
-          const movies = await DataMovie.requestMovies();
-          V.renderSection1(movies);
+          const categories = await DataMovie.requestMovies();
+          V.renderSection1(categories);
         } catch (error) {
           console.error("Erreur lors du chargement des films:", error);
         }
@@ -57,9 +58,11 @@
         header.innerHTML = NavBar.format(hAbout, hHome);
       };
 
-      V.renderSection1 = function (movies) {
+      V.renderSection1 = function (categories) {
         let content = document.querySelector("#content");
-        content.innerHTML = `<h2 class="h2">grid</h2><div class="grid">${Movie.format(movies)}</div>`;
+        content.innerHTML = categories
+          .map((category) => MovieCategory.format(category.category, category.movies))
+          .join("");
       };
 
       V.renderMovieDetail = function (movie) {

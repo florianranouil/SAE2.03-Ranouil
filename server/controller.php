@@ -23,7 +23,27 @@ require("model.php");
 
 function readMoviesController(){
     $movies = getAllMovies();
-    return $movies;
+
+    $groups = [];
+    foreach ($movies as $movie) {
+        $categoryName = $movie->type ?: 'Sans catégorie';
+        if (!isset($groups[$categoryName])) {
+            $groups[$categoryName] = [];
+        }
+        $groups[$categoryName][] = $movie;
+    }
+
+    ksort($groups);
+
+    $result = [];
+    foreach ($groups as $category => $moviesInCategory) {
+        $result[] = [
+            'category' => $category,
+            'movies' => $moviesInCategory
+        ];
+    }
+
+    return $result;
 }
 
 function addMovieController(){
