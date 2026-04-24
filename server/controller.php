@@ -25,3 +25,76 @@ function readMoviesController(){
     $movies = getAllMovies();
     return $movies;
 }
+
+function addMovieController(){
+    // Validation des champs obligatoires
+    $required = ['name', 'year', 'length', 'description', 'director', 'id_category', 'image', 'trailer', 'min_age'];
+    foreach ($required as $field) {
+        if (!isset($_POST[$field]) || empty(trim($_POST[$field]))) {
+            return ['error' => "Champ obligatoire manquant: $field"];
+        }
+    }
+
+    // Validation spécifique
+    if (!is_numeric($_POST['year']) || $_POST['year'] < 1900 || $_POST['year'] > date('Y') + 1) {
+        return ['error' => 'Année invalide'];
+    }
+    if (!is_numeric($_POST['length']) || $_POST['length'] <= 0) {
+        return ['error' => 'Durée invalide'];
+    }
+    if (!is_numeric($_POST['min_age']) || $_POST['min_age'] < 0) {
+        return ['error' => 'Restriction d\'âge invalide'];
+    }
+    if (!is_numeric($_POST['id_category'])) {
+        return ['error' => 'Catégorie invalide'];
+    }
+
+    // Vérifier si la catégorie existe
+    $categories = getCategories();
+    $validCategory = false;
+    foreach ($categories as $cat) {
+        if ($cat->id == $_POST['id_category']) {
+            $validCategory = true;
+            break;
+        }
+    }
+    if (!$validCategory) {
+        return ['error' => 'Catégorie inexistante'];
+    }
+
+    // Ajouter le film
+    $result = addMovie(
+        trim($_POST['name']),
+        (int)$_POST['year'],
+        (int)$_POST['length'],
+        trim($_POST['description']),
+        trim($_POST['director']),
+        (int)$_POST['id_category'],
+        trim($_POST['image']),
+        trim($_POST['trailer']),
+        (int)$_POST['min_age']
+    );
+
+    if ($result) {
+        return ['success' => 'Le film a été ajouté avec succès.'];
+    } else {
+        return ['error' => 'Erreur lors de l\'ajout du film.'];
+    }
+}
+
+function getCategoriesController(){
+    $categories = getCategories();
+    return $categories;
+}
+
+function readMovieDetailController(){
+    if (!isset($_GET['id']) || !is_numeric($_GET['id'])) {
+        return ['error' => 'ID de film invalide'];
+    }
+    $id = (int)$_GET['id'];
+    $movie = getMovieById($id);
+    if (!$movie) {
+        return ['error' => 'Film non trouvé'];
+    }
+    return $movie;
+}

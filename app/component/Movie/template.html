@@ -1,0 +1,30 @@
+<div class="card" onclick="C.handlerDetail({{film__id}})">
+  <div class="card__upper">
+    <button class="btn-play">
+      <div class="btn-play-container">
+        <svg class="icon">
+          <use xlink:href="#icon-play"></use>
+        </svg>
+        <span class="play"> Play </span>
+      </div>
+    </button>
+    <div class="card-bookmark">
+      <svg class="icon icon--bookmark">
+        <use xlink:href="#icon-bookmark2"></use>
+      </svg>
+    </div>
+    <div class="card__image">
+      <img src="{{film__image}}" alt="Affiche de {{film__title}}">
+    </div>
+  </div>
+
+  <div class="card__text-container">
+    <p class="card-text">{{film__date}}</p>
+    <svg class="icon icon--movie">
+      <use xlink:href="#icon-movie"></use>
+    </svg>
+    <p class="card-text">{{film__type}}</p>
+    <p class="card-text">PG</p>
+  </div>
+  <h2 class="h2 grid-text">{{film__title}}</h2>
+</div>

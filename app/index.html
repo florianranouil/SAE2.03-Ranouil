@@ -5,6 +5,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./css/base.css" />
+    <link rel="stylesheet" href="./component/NavBar/style.css" />
+    <link rel="stylesheet" href="./component/section1/style.css" />
   </head>
 
   <body>
@@ -14,10 +16,10 @@
 
     <script type="module">
       import { NavBar } from "./component/NavBar/script.js";
+      import { DataMovie } from "./data/dataMovie.js";
+      import { Movie } from "./component/Movie/script.js";
+      import { MovieDetail } from "./component/MovieDetail/script.js";
 
-      // Controleur
-      // Rappel, écrire window.C plutôt que let C est nécessaire pour tester depuis la console du navigateur
-      // Une fois l'application terminée, on pourrait remettre let C.
       window.C = {};
 
       C.handlerAbout = function () {
@@ -26,27 +28,51 @@
         );
       };
 
-      C.start = function () {
-        V.renderNavBar("C.handlerAbout()");
+      C.handlerHome = function () {
+        C.loadMovies();
       };
 
-      // Vue (contient tout ce qui est relatif à l'affichage)
+      C.handlerDetail = async function (id) {
+        try {
+          const movie = await DataMovie.requestMovieDetails(id);
+          V.renderMovieDetail(movie);
+        } catch (error) {
+          console.error("Erreur lors du chargement des détails du film:", error);
+        }
+      };
+
+      C.loadMovies = async function () {
+        try {
+          const movies = await DataMovie.requestMovies();
+          V.renderSection1(movies);
+        } catch (error) {
+          console.error("Erreur lors du chargement des films:", error);
+        }
+      };
+
       window.V = {};
 
-      /**
-       * V.renderNavBar
-       *
-       * Cette fonction est responsable de l'affichage de la barre de navigation (NavBar).
-       * Elle sélectionne l'élément HTML avec l'ID "header" et y insère le contenu
-       * formaté par le composant NavBar.
-       */
-      V.renderNavBar = function (hAbout) {
+      V.renderNavBar = function (hAbout, hHome) {
         let header = document.querySelector("#header");
-        header.innerHTML = NavBar.format(hAbout);
+        header.innerHTML = NavBar.format(hAbout, hHome);
       };
 
-      C.start(); // Démarre l'application
+      V.renderSection1 = function (movies) {
+        let content = document.querySelector("#content");
+        content.innerHTML = `<h2 class="h2">grid</h2><div class="grid">${Movie.format(movies)}</div>`;
+      };
+
+      V.renderMovieDetail = function (movie) {
+        let content = document.querySelector("#content");
+        content.innerHTML = MovieDetail.format(movie);
+      };
+
+      C.start = function () {
+        V.renderNavBar("C.handlerAbout()", "C.handlerHome()");
+        C.loadMovies();
+      };
+
+      C.start();
     </script>
   </body>
 </html>
-<script type="module"></script>
