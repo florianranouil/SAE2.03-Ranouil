@@ -54,7 +54,17 @@ function getCategories(){
     $res = $stmt->fetchAll(PDO::FETCH_OBJ);
     return $res;
 }
-
+function addProfile($name, $avatar, $age_restriction){
+    try {
+        $cnx = new PDO("mysql:host=".HOST.";dbname=".DBNAME, DBLOGIN, DBPWD);
+        $sql = "INSERT INTO Profile (name, avatar, age_restriction) VALUES (?, ?, ?)";
+        $stmt = $cnx->prepare($sql);
+        $stmt->execute([$name, $avatar, $age_restriction]);
+        return true;
+    } catch (Exception $e) {
+        return false;
+    }
+}
 function getMovieById($id){
     $cnx = new PDO("mysql:host=".HOST.";dbname=".DBNAME, DBLOGIN, DBPWD);
     $sql = "SELECT m.id, m.name AS title, m.year AS date, m.length, m.description, m.director, c.name AS type, m.image, m.trailer, m.min_age 

@@ -1,50 +1,34 @@
-import { NavBar } from "../NavBar/script.js";
-import { DataMovie } from "../../data/dataMovie.js";
-import { Movie } from "../Movie/script.js";
-
-let section1 = {};
-
-section1.render = function (films) {
-  let html = `<h2 class="h2">grid</h2>`;
-  html += `<div class="grid">`;
-  html += Movie.format(films);
-  html += `</div>`;
-  return html;
+// On crée l'objet qui affiche la grille de films
+export const section1 = {
+  render: (films) => `<div class="grid">${Movie.format(films)}</div>`
 };
 
-window.C = {};
-window.V = {};
+// C = Contrôleur (Les actions)
+window.C = {
+  handlerAbout: () => alert("Ceci est une base de projet pour la SAE2.03 édition 2025. Bonne chance !"),
 
-C.handlerAbout = function () {
-  alert(
-    "Ceci est une base de projet pour la SAE2.03 édition 2025. Bonne chance !"
-  );
-};
+  loadMovies: () => {
+    DataMovie.requestMovies()
+      .then(movies => V.renderSection1(movies))
+      .catch(err => console.error("Erreur :", err));
+  },
 
-C.loadMovies = async function () {
-  try {
-    const movies = await DataMovie.requestMovies();
-    V.renderSection1(movies);
-  } catch (error) {
-    console.error("Erreur lors du chargement des films:", error);
+  start: () => {
+    V.renderNavBar("C.handlerAbout()");
+    C.loadMovies();
   }
 };
 
-V.renderNavBar = function (hAbout) {
-  let header = document.querySelector("#header");
-  header.innerHTML = NavBar.format(hAbout);
+// V = Vue (L'affichage dans le HTML)
+window.V = {
+  renderNavBar: (hAbout) => {
+    document.querySelector("#header").innerHTML = NavBar.format(hAbout);
+  },
+
+  renderSection1: (movies) => {
+    document.querySelector("#content").innerHTML = section1.render(movies);
+  }
 };
 
-V.renderSection1 = function (movies) {
-  let content = document.querySelector("#content");
-  content.innerHTML = section1.render(movies);
-};
-
-C.start = function () {
-  V.renderNavBar("C.handlerAbout()");
-  C.loadMovies();
-};
-
+// On lance le tout
 C.start();
-
-export { section1 };

@@ -1,0 +1,24 @@
+<form id="profileForm" class="profile-form">
+  <div class="form-group">
+    <label for="profileName">Nom du profil *</label>
+    <input type="text" id="profileName" name="name" placeholder="Nom du profil" required />
+  </div>
+
+  <div class="form-group">
+    <label for="profileAvatar">Avatar (image) *</label>
+    <input type="file" id="profileAvatar" name="avatar" accept="image/*" required />
+  </div>
+
+  <div class="form-group">
+    <label for="ageRestriction">Restriction d'âge *</label>
+    <select id="ageRestriction" name="age_restriction" required>
+      <option value="">Sélectionner une restriction</option>
+      <option value="0">Tous publics (0+)</option>
+      <option value="12">Enfants et plus (12+)</option>
+      <option value="16">Adolescents et plus (16+)</option>
+      <option value="18">Adultes (18+)</option>
+    </select>
+  </div>
+
+  <button type="submit" class="btn-submit">Ajouter le profil</button>
+</form>

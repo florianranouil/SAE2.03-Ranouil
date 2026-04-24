@@ -5,53 +5,82 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./css/base.css" />
+    <link rel="stylesheet" href="./component/ProfileForm/style.css" />
   </head>
   <body>
     <section id="log"></section>
     <section id="movieForm"></section>
+    <section id="profileForm"></section>
 
     <script type="module">
       import { Log } from "./component/Log/script.js";
       import { MovieForm } from "./component/MovieForm/script.js";
+      import { ProfileForm } from "./component/ProfileForm/script.js";
       import { DataMovie } from "./data/dataMovie.js";
+      import { DataProfile } from "./data/dataProfile.js";
 
       window.C = {};
 
-      C.handlerAddMovie = async function (event) {
+      C.handlerAddMovie = function (event) {
         event.preventDefault();
-        const formData = new FormData(event.target);
-        const movieData = Object.fromEntries(formData.entries());
+        var formData = new FormData(event.target);
+        var movieData = {};
+        for (var pair of formData.entries()) {
+          movieData[pair[0]] = pair[1];
+        }
         V.renderLog("Envoi du formulaire en cours...");
-        try {
-          const response = await DataMovie.add(movieData);
+        DataMovie.add(movieData).then(function(response) {
           if (response.success) {
             V.renderLog(response.success);
-            event.target.reset(); // Reset form
+            event.target.reset();
           } else if (response.error) {
             V.renderLog("Erreur: " + response.error);
           }
-        } catch (error) {
+        }).catch(function(error) {
           V.renderLog("Erreur de connexion: " + error.message);
-        }
+        });
+      };
+
+      C.handlerAddProfile = function (event) {
+        event.preventDefault();
+        var formData = new FormData(event.target);
+        V.renderLog("Envoi du profil en cours...");
+        DataProfile.add(formData).then(function(response) {
+          if (response.success) {
+            V.renderLog(response.success);
+            event.target.reset();
+          } else if (response.error) {
+            V.renderLog("Erreur: " + response.error);
+          }
+        }).catch(function(error) {
+          V.renderLog("Erreur de connexion: " + error.message);
+        });
       };
 
       C.start = function () {
         V.renderLog("Démarrage de l'application");
         V.renderMovieForm();
+        V.renderProfileForm();
       };
 
       window.V = {};
 
       V.renderLog = function (txt) {
-        let content = document.querySelector("#log");
+        var content = document.querySelector("#log");
         content.innerHTML = Log.format(txt);
       };
 
       V.renderMovieForm = function () {
-        let content = document.querySelector("#movieForm");
+        var content = document.querySelector("#movieForm");
         content.innerHTML = MovieForm.format();
         MovieForm.loadCategories();
         document.getElementById("movieForm").addEventListener("submit", C.handlerAddMovie);
+      };
+
+      V.renderProfileForm = function () {
+        var content = document.querySelector("#profileForm");
+        content.innerHTML = ProfileForm.format();
+        document.getElementById("profileForm").addEventListener("submit", C.handlerAddProfile);
       };
 
       C.start();

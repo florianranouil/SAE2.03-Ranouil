@@ -1,15 +1,15 @@
-let DataMovie = {};
+var DataMovie = {};
 
-DataMovie.requestMovies = async function () {
-  const response = await fetch("../server/script.php?todo=readmovies");
-  const data = await response.json();
-  return data;
+DataMovie.requestMovies = function () {
+  return fetch("../server/script.php?todo=readmovies").then(function(response) {
+    return response.json();
+  });
 };
 
-DataMovie.requestMovieDetails = async function (id) {
-  const response = await fetch(`../server/script.php?todo=readmoviedetail&id=${id}`);
-  const data = await response.json();
-  return data;
+DataMovie.requestMovieDetails = function (id) {
+  return fetch(`../server/script.php?todo=readmoviedetail&id=${id}`).then(function(response) {
+    return response.json();
+  });
 };
 
 export { DataMovie };

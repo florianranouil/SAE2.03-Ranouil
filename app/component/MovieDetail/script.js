@@ -1,7 +1,7 @@
-let MovieDetail = {};
+var MovieDetail = {};
 
 MovieDetail.format = function (movie) {
-  let html = `
+  var html = `
     <div class="movie-detail">
       <h1>${movie.title}</h1>
       <img src="../server/images/${movie.image}" alt="${movie.title}" class="movie-poster">

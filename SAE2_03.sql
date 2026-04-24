@@ -77,6 +77,19 @@ INSERT INTO `Movie` (`id`, `name`, `year`, `length`, `description`, `director`, 
 (17, 'Your Name', 2016, 107, 'Deux adolescents échangent leurs corps de manière mystérieuse.', 'Makoto Shinkai', 5, 'your_name.jpg', 'https://www.youtube.com/embed/AROOK45LXXg?si=aUQyGk2VMCb_ToUL', 10),
 (27, 'Le Bon, la Brute et le Truand', 1966, 161, 'Trois hommes se lancent à la recherche d\'un trésor caché.', 'Sergio Leone', 8, 'bon_brute_truand.jpg', 'https://www.youtube.com/embed/WA1hCZFOPqs?si=TwNZAoM4oj4KpGja', 12);
 
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `Profile`
+--
+
+CREATE TABLE `Profile` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `avatar` varchar(255) DEFAULT NULL,
+  `age_restriction` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
 --
 -- Index pour les tables déchargées
 --
@@ -95,6 +108,12 @@ ALTER TABLE `Movie`
   ADD KEY `id_category` (`id_category`);
 
 --
+-- Index pour la table `Profile`
+--
+ALTER TABLE `Profile`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT pour les tables déchargées
 --
 
@@ -111,9 +130,15 @@ ALTER TABLE `Movie`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
+-- AUTO_INCREMENT pour la table `Profile`
+--
+ALTER TABLE `Profile`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
+
+--
 -- Contraintes pour les tables déchargées
 --
-
+z
 --
 -- Contraintes pour la table `Movie`
 --

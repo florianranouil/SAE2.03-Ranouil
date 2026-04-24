@@ -55,3 +55,4 @@ MovieForm.loadCategories = async function () {
 };
 
 export { MovieForm };
+

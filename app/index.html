@@ -33,40 +33,38 @@
         C.loadMovies();
       };
 
-      C.handlerDetail = async function (id) {
-        try {
-          const movie = await DataMovie.requestMovieDetails(id);
+      C.handlerDetail = function (id) {
+        DataMovie.requestMovieDetails(id).then(function(movie) {
           V.renderMovieDetail(movie);
-        } catch (error) {
+        }).catch(function(error) {
           console.error("Erreur lors du chargement des détails du film:", error);
-        }
+        });
       };
 
-      C.loadMovies = async function () {
-        try {
-          const categories = await DataMovie.requestMovies();
+      C.loadMovies = function () {
+        DataMovie.requestMovies().then(function(categories) {
           V.renderSection1(categories);
-        } catch (error) {
+        }).catch(function(error) {
           console.error("Erreur lors du chargement des films:", error);
-        }
+        });
       };
 
       window.V = {};
 
       V.renderNavBar = function (hAbout, hHome) {
-        let header = document.querySelector("#header");
+        var header = document.querySelector("#header");
         header.innerHTML = NavBar.format(hAbout, hHome);
       };
 
       V.renderSection1 = function (categories) {
-        let content = document.querySelector("#content");
+        var content = document.querySelector("#content");
         content.innerHTML = categories
           .map((category) => MovieCategory.format(category.category, category.movies))
           .join("");
       };
 
       V.renderMovieDetail = function (movie) {
-        let content = document.querySelector("#content");
+        var content = document.querySelector("#content");
         content.innerHTML = MovieDetail.format(movie);
       };
 

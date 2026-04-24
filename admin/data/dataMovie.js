@@ -1,16 +1,16 @@
-let DataMovie = {};
+var DataMovie = {};
 
-DataMovie.add = async function (movieData) {
-  const formData = new FormData();
-  for (const key in movieData) {
+DataMovie.add = function (movieData) {
+  var formData = new FormData();
+  for (var key in movieData) {
     formData.append(key, movieData[key]);
   }
-  const response = await fetch("../server/script.php?todo=addmovie", {
+  return fetch("../server/script.php?todo=addmovie", {
     method: 'POST',
     body: formData
+  }).then(function(response) {
+    return response.json();
   });
-  const data = await response.json();
-  return data;
 };
 
 export { DataMovie };

@@ -1,10 +1,10 @@
-let templateFile = await fetch("./template.html");
-let template = await templateFile.text();
+var templateFile = await fetch(new URL("./template.html", import.meta.url));
+var template = await templateFile.text();
 
-let NavBar = {};
+var NavBar = {};
 
 NavBar.format = function (hAbout, hHome) {
-  let html = template;
+  var html = template;
   html = html.replace("{{hAbout}}", hAbout);
   html = html.replace("{{hHome}}", hHome);
   return html;
