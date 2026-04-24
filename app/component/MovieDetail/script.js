@@ -1,22 +1,24 @@
+var templateFile = await fetch(new URL("./template.html", import.meta.url));
+var template = await templateFile.text();
+
 var MovieDetail = {};
 
 MovieDetail.format = function (movie) {
-  var html = `
-    <div class="movie-detail">
-      <h1>${movie.title}</h1>
-      <img src="../server/images/${movie.image}" alt="${movie.title}" class="movie-poster">
-      <p><strong>Description:</strong> ${movie.description}</p>
-      <p><strong>Réalisateur:</strong> ${movie.director}</p>
-      <p><strong>Année:</strong> ${movie.date}</p>
-      <p><strong>Catégorie:</strong> ${movie.type}</p>
-      <p><strong>Durée:</strong> ${movie.length} minutes</p>
-      <p><strong>Restrictions d'âge:</strong> ${movie.min_age} ans</p>
-      <div class="trailer">
-        <h2>Trailer</h2>
-        <iframe width="560" height="315" src="${movie.trailer}" frameborder="0" allowfullscreen></iframe>
-      </div>
-    </div>
-  `;
+  if (!movie || typeof movie !== "object") {
+    return "<div class='movie-detail'>Film introuvable.</div>";
+  }
+
+  var html = template;
+  html = html.replaceAll("{{title}}", movie.title || "");
+  html = html.replaceAll("{{image}}", movie.image || "");
+  html = html.replaceAll("{{description}}", movie.description || "");
+  html = html.replaceAll("{{director}}", movie.director || "");
+  html = html.replaceAll("{{date}}", movie.date || "");
+  html = html.replaceAll("{{type}}", movie.type || "");
+  html = html.replaceAll("{{length}}", movie.length || "");
+  html = html.replaceAll("{{min_age}}", movie.min_age || "");
+  html = html.replaceAll("{{trailer}}", movie.trailer || "");
+
   return html;
 };
 

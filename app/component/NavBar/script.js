@@ -3,10 +3,10 @@ var template = await templateFile.text();
 
 var NavBar = {};
 
-NavBar.format = function (hAbout, hHome) {
+NavBar.format = function (hAbout = "C.handlerAbout()", hHome = "C.handlerHome()") {
   var html = template;
-  html = html.replace("{{hAbout}}", hAbout);
-  html = html.replace("{{hHome}}", hHome);
+  html = html.replaceAll("{{hAbout}}", hAbout);
+  html = html.replaceAll("{{hHome}}", hHome);
   return html;
 };
 

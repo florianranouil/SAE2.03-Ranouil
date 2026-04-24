@@ -18,15 +18,13 @@
     <script type="module">
       import { NavBar } from "./component/NavBar/script.js";
       import { DataMovie } from "./data/dataMovie.js";
-      import { MovieCategory } from "./component/MovieCategory/script.js";
+      import { Section1 } from "./component/section1/script.js";
       import { MovieDetail } from "./component/MovieDetail/script.js";
 
       window.C = {};
 
       C.handlerAbout = function () {
-        alert(
-          "Ceci est une base de projet pour la SAE2.03 édition 2025. Bonne chance !"
-        );
+        alert("Ceci est une base de projet pour la SAE2.03 édition 2025. Bonne chance !");
       };
 
       C.handlerHome = function () {
@@ -34,42 +32,27 @@
       };
 
       C.handlerDetail = function (id) {
-        DataMovie.requestMovieDetails(id).then(function(movie) {
-          V.renderMovieDetail(movie);
-        }).catch(function(error) {
-          console.error("Erreur lors du chargement des détails du film:", error);
-        });
+        DataMovie.requestMovieDetails(id)
+          .then(function (movie) {
+            document.querySelector("#content").innerHTML = MovieDetail.format(movie);
+          })
+          .catch(function (error) {
+            console.error("Erreur lors du chargement du film :", error);
+          });
       };
 
       C.loadMovies = function () {
-        DataMovie.requestMovies().then(function(categories) {
-          V.renderSection1(categories);
-        }).catch(function(error) {
-          console.error("Erreur lors du chargement des films:", error);
-        });
-      };
-
-      window.V = {};
-
-      V.renderNavBar = function (hAbout, hHome) {
-        var header = document.querySelector("#header");
-        header.innerHTML = NavBar.format(hAbout, hHome);
-      };
-
-      V.renderSection1 = function (categories) {
-        var content = document.querySelector("#content");
-        content.innerHTML = categories
-          .map((category) => MovieCategory.format(category.category, category.movies))
-          .join("");
-      };
-
-      V.renderMovieDetail = function (movie) {
-        var content = document.querySelector("#content");
-        content.innerHTML = MovieDetail.format(movie);
+        DataMovie.requestMovies()
+          .then(function (categories) {
+            document.querySelector("#content").innerHTML = Section1.render(categories, "C.handlerDetail");
+          })
+          .catch(function (error) {
+            console.error("Erreur lors du chargement des films :", error);
+          });
       };
 
       C.start = function () {
-        V.renderNavBar("C.handlerAbout()", "C.handlerHome()");
+        document.querySelector("#header").innerHTML = NavBar.format("C.handlerAbout()", "C.handlerHome()");
         C.loadMovies();
       };
 

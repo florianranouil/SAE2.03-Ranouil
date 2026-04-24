@@ -3,7 +3,7 @@ var template = await templateFile.text();
 
 var Movie = {};
 
-Movie.format = function (films) {
+Movie.format = function (films, detailHandler = "C.handlerDetail") {
   if (!Array.isArray(films)) {
     films = [films];
   }
@@ -13,6 +13,7 @@ Movie.format = function (films) {
     var film = films[i];
     var film__image = film.image ? `../server/images/${film.image}` : "";
     var filmHtml = template;
+    filmHtml = filmHtml.replaceAll("{{film__detailHandler}}", `${detailHandler}(${film.id || ""})`);
     filmHtml = filmHtml.replaceAll("{{film__date}}", film.date || "");
     filmHtml = filmHtml.replaceAll("{{film__type}}", film.type || "");
     filmHtml = filmHtml.replaceAll("{{film__title}}", film.title || "");
