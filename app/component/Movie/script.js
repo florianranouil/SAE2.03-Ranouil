@@ -24,5 +24,6 @@ Movie.format = function (films, detailHandler = "C.handlerDetail") {
 
   return html;
 };
+console.log(Movie);
 
 export { Movie };
