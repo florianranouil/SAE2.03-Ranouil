@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="./css/base.css" />
     <link rel="stylesheet" href="./component/NavBar/style.css" />
     <link rel="stylesheet" href="./component/MovieCategory/style.css" />
-    <link rel="stylesheet" href="./component/section1/style.css" />
+    <link rel="stylesheet" href="./component/ListeMovies/style.css" />
   </head>
 
   <body>
@@ -18,7 +18,73 @@
     <script type="module">
       import { NavBar } from "./component/NavBar/script.js";
       import { DataMovie } from "./data/dataMovie.js";
-      import { Section1 } from "./component/section1/script.js";
+      import { ListeMovies } from "./component/ListeMovies/script.js";
+      import { MovieDetail } from "./component/MovieDetail/script.js";
+
+      window.C = {};
+
+      C.handlerAbout = function () {
+        alert("Ceci est une base de projet pour la SAE2.03 édition 2025. Bonne chance !");
+      };
+
+      C.handlerHome = function () {
+        C.loadMovies();
+      };
+
+      C.handlerDetail = function (id) {
+        DataMovie.requestMovieDetails(id)
+          .then(function (movie) {
+            document.querySelector("#content").innerHTML = MovieDetail.format(movie);
+          })
+          .catch(function (error) {
+            console.error("Erreur lors du chargement du film :", error);
+          });
+      };
+
+C.loadMovies = function () {
+  DataMovie.requestMovies()
+    .then(function (categories) {
+      document.querySelector("#content").innerHTML =
+        ListeMovies.formatMany(categories, "C.handlerDetail");
+    })
+    .catch(function (error) {
+      console.error("Erreur lors du chargement des films :", error);
+    });
+};
+
+
+      C.start = function () {
+        document.querySelector("#header").innerHTML = NavBar.format("C.handlerAbout()", "C.handlerHome()");
+        C.loadMovies();
+      };
+
+      C.start();
+    </script>
+  </body>
+</html>
+
+
+<!-- <!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <title>SAE2.03 APP</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./css/base.css" />
+    <link rel="stylesheet" href="./component/NavBar/style.css" />
+    <link rel="stylesheet" href="./component/MovieCategory/style.css" />
+    <link rel="stylesheet" href="./component/ListeMovies/style.css" />
+  </head>
+
+  <body>
+    <header id="header"></header>
+
+    <section id="content"></section>
+
+    <script type="module">
+      import { NavBar } from "./component/NavBar/script.js";
+      import { DataMovie } from "./data/dataMovie.js";
+      import { ListeMovies } from "./component/ListeMovies/script.js";
       import { MovieDetail } from "./component/MovieDetail/script.js";
 
       window.C = {};
@@ -44,7 +110,8 @@
       C.loadMovies = function () {
         DataMovie.requestMovies()
           .then(function (categories) {
-            document.querySelector("#content").innerHTML = Section1.render(categories, "C.handlerDetail");
+            document.querySelector("#content").innerHTML =
+              ListeMovies.formatMany(categories, "C.handlerDetail");
           })
           .catch(function (error) {
             console.error("Erreur lors du chargement des films :", error);
@@ -52,11 +119,12 @@
       };
 
       C.start = function () {
-        document.querySelector("#header").innerHTML = NavBar.format("C.handlerAbout()", "C.handlerHome()");
+        document.querySelector("#header").innerHTML =
+          NavBar.format("C.handlerAbout()", "C.handlerHome()");
         C.loadMovies();
       };
 
       C.start();
     </script>
   </body>
-</html>
+</html> -->
