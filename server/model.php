@@ -13,11 +13,15 @@
  * DBLOGIN : Nom d'utilisateur pour se connecter à la base de données.
  * DBPWD : Mot de passe pour se connecter à la base de données.
  */
-define("HOST", "localhost");
-define("DBNAME", "ranouil8");
-define("DBLOGIN", "ranouil8");
-define("DBPWD", "ranouil8");
+// define("HOST", "localhost");
+// define("DBNAME", "ranouil8");
+// define("DBLOGIN", "ranouil8");
+// define("DBPWD", "ranouil8");
 
+define("HOST", "localhost");
+define("DBNAME", "SAE203");
+define("DBLOGIN", "usersae203");
+define("DBPWD", "nairolf13HARDEN!");
 
 function getAllMovies(){
     // Connexion à la base de données
@@ -54,6 +58,7 @@ function getCategories(){
     $res = $stmt->fetchAll(PDO::FETCH_OBJ);
     return $res;
 }
+
 function addProfile($name, $avatar, $age_restriction){
     try {
         $cnx = new PDO("mysql:host=".HOST.";dbname=".DBNAME, DBLOGIN, DBPWD);
@@ -65,6 +70,8 @@ function addProfile($name, $avatar, $age_restriction){
         return false;
     }
 }
+
+
 function getMovieById($id){
     $cnx = new PDO("mysql:host=".HOST.";dbname=".DBNAME, DBLOGIN, DBPWD);
     $sql = "SELECT m.id, m.name AS title, m.year AS date, m.length, m.description, m.director, c.name AS type, m.image, m.trailer, m.min_age 

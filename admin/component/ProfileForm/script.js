@@ -1,10 +1,11 @@
-var templateFile = await fetch(new URL("./template.html", import.meta.url));
-var template = await templateFile.text();
+let templateFile = await fetch(new URL("./template.html", import.meta.url));
+let template = await templateFile.text();
 
-var ProfileForm = {};
+let ProfileForm = {};
 
 ProfileForm.format = function () {
   return template;
 };
 
 export { ProfileForm };
+

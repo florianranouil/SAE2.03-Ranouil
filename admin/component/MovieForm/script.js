@@ -1,41 +1,12 @@
+let templateFile = await fetch('./component/MovieForm/template.html');
+let template = await templateFile.text();
+
 let MovieForm = {};
 
-MovieForm.format = function () {
-  return `
-    <form id="movieForm">
-      <h2>Ajouter un film</h2>
-      <label for="name">Titre du film:</label>
-      <input type="text" id="name" name="name" required><br><br>
-
-      <label for="director">Réalisateur:</label>
-      <input type="text" id="director" name="director" required><br><br>
-
-      <label for="year">Année de sortie:</label>
-      <input type="number" id="year" name="year" min="1900" max="2030" required><br><br>
-
-      <label for="length">Durée en minutes:</label>
-      <input type="number" id="length" name="length" min="1" required><br><br>
-
-      <label for="description">Description:</label>
-      <textarea id="description" name="description" required></textarea><br><br>
-
-      <label for="id_category">Catégorie:</label>
-      <select id="id_category" name="id_category" required>
-        <option value="">Sélectionnez une catégorie</option>
-      </select><br><br>
-
-      <label for="image">Nom du fichier image:</label>
-      <input type="text" id="image" name="image" required><br><br>
-
-      <label for="trailer">URL du trailer:</label>
-      <input type="url" id="trailer" name="trailer" required><br><br>
-
-      <label for="min_age">Restrictions d'âge:</label>
-      <input type="number" id="min_age" name="min_age" min="0" required><br><br>
-
-      <button type="submit">Ajouter le film</button>
-    </form>
-  `;
+MovieForm.format = function (handler) {
+  let html = template;
+  html = html.replace("{{handler}}", handler);
+  return html;
 };
 
 MovieForm.loadCategories = async function () {
@@ -55,4 +26,34 @@ MovieForm.loadCategories = async function () {
 };
 
 export { MovieForm };
+
+// let templateFile = await fetch('./component/MovieForm/template.html');
+// let template = await templateFile.text();
+
+// let templateFile2 = await fetch('./component/MovieForm/templateLi.html');
+// let templateLi = await templateFile2.text();
+
+// let MovieForm = {};
+
+// MovieForm.format = function(categ){
+//     let html= templateLi;
+//     html = html.replace('{{name}}', categ.name);
+//     html = html.replace("{{id}}", categ.id);
+//     return html;
+// }
+
+// MovieForm.formatMany = function (handler,data) {
+//   let html = template;
+
+//   let liste = "";
+//     for (const categ of data) {
+//         liste += MovieForm.format(categ);
+//     }
+
+//   html = html.replace("{{listCategory}}", liste);
+//   html = html.replace("{{handler}}", handler);
+//   return html;
+// };
+
+// export{ MovieForm };
 

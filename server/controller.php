@@ -127,25 +127,7 @@ function addProfileController(){
     if (!isset($_POST['age_restriction']) || $_POST['age_restriction'] === '') {
         return ['error' => 'La restriction d\'âge est obligatoire'];
     }
-    if (!isset($_FILES['avatar']) || $_FILES['avatar']['error'] === UPLOAD_ERR_NO_FILE) {
-        return ['error' => 'L\'avatar est obligatoire'];
-    }
 
-    // Validation de l'avatar
-    if ($_FILES['avatar']['error'] !== UPLOAD_ERR_OK) {
-        return ['error' => 'Erreur lors du téléchargement de l\'avatar'];
-    }
-
-    // Vérifier le type de fichier
-    $allowed_types = ['image/jpeg', 'image/png', 'image/gif', 'image/webp'];
-    if (!in_array($_FILES['avatar']['type'], $allowed_types)) {
-        return ['error' => 'Format d\'image non supporté'];
-    }
-
-    // Vérifier la taille (max 5MB)
-    if ($_FILES['avatar']['size'] > 5 * 1024 * 1024) {
-        return ['error' => 'L\'image est trop voluminense (max 5MB)'];
-    }
 
     // Validation de la restriction d'âge
     $valid_ages = ['0', '12', '16', '18'];
@@ -153,34 +135,38 @@ function addProfileController(){
         return ['error' => 'Restriction d\'âge invalide'];
     }
 
-    // Créer le répertoire de destination s'il n'existe pas
-    $upload_dir = 'profiles_avatars/';
-    if (!is_dir($upload_dir)) {
-        mkdir($upload_dir, 0755, true);
-    }
 
-    // Générer un nom unique pour le fichier
-    $file_extension = pathinfo($_FILES['avatar']['name'], PATHINFO_EXTENSION);
-    $avatar_filename = 'profile_' . time() . '_' . uniqid() . '.' . $file_extension;
-    $avatar_path = $upload_dir . $avatar_filename;
 
-    // Déplacer le fichier téléchargé
-    if (!move_uploaded_file($_FILES['avatar']['tmp_name'], $avatar_path)) {
-        return ['error' => 'Erreur lors de la sauvegarde de l\'avatar'];
-    }
 
     // Ajouter le profil à la base de données
     $result = addProfile(
         trim($_POST['name']),
-        $avatar_filename,
+        $_POST['avatar'], // L'upload de l'avatar est géré côté client, on suppose que le chemin de l'avatar est envoyé dans ce champ
         (int)$_POST['age_restriction']
     );
 
     if ($result) {
         return ['success' => 'Le profil a été ajouté avec succès.'];
     } else {
-        // Supprimer le fichier en cas d'erreur d'ajout en BDD
-        unlink($avatar_path);
         return ['error' => 'Erreur lors de l\'ajout du profil.'];
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

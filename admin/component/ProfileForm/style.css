@@ -1,0 +1,61 @@
+ Conteneur du formulaire
+
+.profile-form {
+  max-width: 400px;
+  margin: 30px auto;
+  padding: 20px;
+  background: #ffffff;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+  font-family: Arial, sans-serif;
+}
+
+/* Groupes de champs */
+.profile-form .form-group {
+  margin-bottom: 15px;
+}
+
+/* Labels */
+.profile-form label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 6px;
+  color: #333;
+}
+
+/* Inputs & Select */
+.profile-form input[type="text"],
+.profile-form input[type="file"],
+.profile-form select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #bbb;
+  border-radius: 6px;
+  font-size: 14px;
+  background: #fafafa;
+  transition: border-color 0.2s;
+}
+
+.profile-form input:focus,
+.profile-form select:focus {
+  border-color: #5a3df0;
+  outline: none;
+}
+
+/* Bouton */
+.profile-form .btn-submit {
+  width: 100%;
+  padding: 12px;
+  background: #5a3df0;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 15px;
+  cursor: pointer;
+  transition: background 0.2s;
+} */
+
+.profile-form .btn-submit:hover {
+  background: #472ec4;
+} 

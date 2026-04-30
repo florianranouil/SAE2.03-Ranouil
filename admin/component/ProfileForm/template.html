@@ -1,4 +1,4 @@
-<form id="profileForm" class="profile-form">
+<form id="profileForm" class="profile-form" enctype="multipart/form-data">
   <div class="form-group">
     <label for="profileName">Nom du profil *</label>
     <input type="text" id="profileName" name="name" placeholder="Nom du profil" required />
@@ -6,7 +6,7 @@
 
   <div class="form-group">
     <label for="profileAvatar">Avatar (image) *</label>
-    <input type="file" id="profileAvatar" name="avatar" accept="image/*" required />
+    <input type="text" id="profileAvatar" name="avatar" required />
   </div>
 
   <div class="form-group">
@@ -22,3 +22,4 @@
 
   <button type="submit" class="btn-submit">Ajouter le profil</button>
 </form>
+

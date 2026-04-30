@@ -8,15 +8,7 @@ const templateLiLast = "<li class='last'>[{{time}}] {{txt}}<span class='clignota
 
 let Log = {};
 let history = []; // Historique des messages
-
-// Fonction interne pour ajouter un log avec l'heure actuelle
-function add(txt) {
-    const d = new Date();
-    const time = `${d.getHours()}:${d.getMinutes()}:${d.getSeconds()}`;
-    history.push({ time, txt });
-}
-
-// Fonction interne pour transformer l'historique en HTML
+// interne pour transformer l'historique en HTML
 function formatHistory() {
     if (history.length === 0) return "";
 
@@ -41,3 +33,11 @@ Log.format = function(txt) {
 };
 
 export { Log };
+// Fonction interne pour ajouter un log avec l'heure actuelle
+function add(txt) {
+    const d = new Date();
+    const time = `${d.getHours()}:${d.getMinutes()}:${d.getSeconds()}`;
+    history.push({ time, txt });
+}
+
+// Fonction 
