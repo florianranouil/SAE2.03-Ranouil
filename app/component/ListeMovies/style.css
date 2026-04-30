@@ -1,4 +1,4 @@
-.icon {
+/* .icon {
   --_icon-taille: 2rem;
   width: var(--_icon-taille);
   height: var(--_icon-taille);
@@ -60,4 +60,62 @@ button{
   flex-direction: column;
   gap: 0.5rem;
 }
+ */
 
+
+/* Conteneur global */
+.liste {
+    width: 100%;
+    padding: 2rem;
+    box-sizing: border-box;
+}
+
+/* Grille responsive */
+.liste__list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(18rem, 1fr));
+    gap: 2rem;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* Carte film */
+.liste__item {
+    background: #fff;
+    border-radius: 1rem;
+    padding: 1rem;
+    text-align: center;
+    box-shadow: 0 0.2rem 0.6rem rgba(0,0,0,0.1);
+    transition: transform 0.2s ease;
+}
+
+.liste__item:hover {
+    transform: scale(1.05);
+}
+
+/* IMAGE FIXE ET IDENTIQUE POUR TOUS LES FILMS */
+.liste__image {
+    width: 100%;
+    height: 26rem;       /* ← même hauteur pour tous */
+    object-fit: cover;   /* ← recadre proprement */
+    border-radius: 0.8rem;
+    display: block;
+    cursor: pointer;
+}
+
+/* Titre du film */
+.liste__titre-film {
+    margin-top: 1rem;
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: #222;
+}
+
+/* Titre de catégorie */
+h2 {
+    margin: 3rem 0 1rem;
+    font-size: 2rem;
+    font-weight: bold;
+    color: #333;
+}

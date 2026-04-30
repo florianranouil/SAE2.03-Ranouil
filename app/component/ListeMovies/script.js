@@ -39,11 +39,10 @@ let ListeMovies = {};
 
 ListeMovies.format = function (film, handler) {
     let html = templateLi;
-    html = html.replace('{{nomFilm}}', film.name);
-    // html = html.replace('{{imageFilm}}', film.image);
-    html = html.replace('{{imageFilm}}', `images/${film.image}`);
-    html = html.replace('{{anneeFilm}}', film.year);
-    html = html.replace('{{handler}}', `${handler}(${film.id})`);
+    html = html.replaceAll('{{nomFilm}}', film.title);
+    html = html.replaceAll('{{imageFilm}}', film.image);
+    html = html.replaceAll('{{anneeFilm}}', film.date);
+    html = html.replaceAll('{{handler}}', `${handler}(${film.id})`);
     return html;
 };
 

@@ -1,7 +1,7 @@
-var templateFile = await fetch(new URL("./template.html", import.meta.url));
-var template = await templateFile.text();
+let templateFile = await fetch(new URL("./template.html", import.meta.url));
+let template = await templateFile.text();
 
-var Movie = {};
+let Movie = {};
 
 Movie.format = function (films, detailHandler = "C.handlerDetail") {
   if (!Array.isArray(films)) {
@@ -10,9 +10,9 @@ Movie.format = function (films, detailHandler = "C.handlerDetail") {
 
   var html = "";
   for (var i = 0; i < films.length; i++) {
-    var film = films[i];
-    var film__image = film.image ? `../server/images/${film.image}` : "";
-    var filmHtml = template;
+    let film = films[i];
+    let film__image = film.image ? `../server/images/${film.image}` : "";
+    let filmHtml = template;
     filmHtml = filmHtml.replaceAll("{{film__detailHandler}}", `${detailHandler}(${film.id || ""})`);
     filmHtml = filmHtml.replaceAll("{{film__date}}", film.date || "");
     filmHtml = filmHtml.replaceAll("{{film__type}}", film.type || "");

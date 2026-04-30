@@ -1,3 +1,5 @@
+let HOST_URL = "https://ranouil-sae203.mmi-limoges.fr";
+
 var DataMovie = {};
 
 DataMovie.requestMovies = function () {
