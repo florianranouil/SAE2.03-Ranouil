@@ -1,4 +1,4 @@
-<div class="movie-detail">
+<!-- <div class="movie-detail">
   <h1>{{title}}</h1>
   <img src="../server/images/{{image}}" alt="{{title}}" class="movie-poster">
   <p><strong>Description:</strong> {{description}}</p>
@@ -11,4 +11,30 @@
     <h2>Trailer</h2>
     <iframe width="560" height="315" src="{{trailer}}" frameborder="0" allowfullscreen></iframe>
   </div>
+</div> -->
+
+<div class="movie-detail">
+
+  <div class="movie-detail__top">
+    <img src="../server/images/{{image}}" 
+         alt="{{title}}" 
+         class="movie-detail__poster">
+
+    <div class="movie-detail__content">
+      <h1 class="movie-detail__title">{{title}}</h1>
+
+      <p class="movie-detail__info"><strong>Description :</strong> {{description}}</p>
+      <p class="movie-detail__info"><strong>Réalisateur :</strong> {{director}}</p>
+      <p class="movie-detail__info"><strong>Année :</strong> {{date}}</p>
+      <p class="movie-detail__info"><strong>Catégorie :</strong> {{type}}</p>
+      <p class="movie-detail__info"><strong>Durée :</strong> {{length}} minutes</p>
+      <p class="movie-detail__info"><strong>Restrictions d'âge :</strong> {{min_age}} ans</p>
+    </div>
+  </div>
+
+  <div class="movie-detail__trailer">
+    <h2 class="movie-detail__trailer-title">Trailer</h2>
+    <iframe src="{{trailer}}" allowfullscreen></iframe>
+  </div>
+
 </div>

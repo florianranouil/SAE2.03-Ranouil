@@ -135,9 +135,6 @@ function addProfileController(){
         return ['error' => 'Restriction d\'âge invalide'];
     }
 
-
-
-
     // Ajouter le profil à la base de données
     $result = addProfile(
         trim($_POST['name']),
@@ -151,6 +148,7 @@ function addProfileController(){
         return ['error' => 'Erreur lors de l\'ajout du profil.'];
     }
 }
+
 
 
 
