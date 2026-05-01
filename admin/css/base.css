@@ -3,5 +3,5 @@
 @import "./reset.css" layer(reset);
 @import "./variables.css" layer(variables);
 @import "./utilities.css" layer(utilities);
-
+@import "../component/MovieForm/style.css" layer(components);
 @import "../component/Log/style.css" layer(components);

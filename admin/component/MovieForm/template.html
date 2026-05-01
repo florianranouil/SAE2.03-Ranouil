@@ -1,107 +1,54 @@
-<form id="movieForm">
-  <h2>Ajouter un film</h2>
+<link rel="stylesheet" href="component/MovieForm/style.css">
 
-  <div>
-    <label>Titre</label>
-    <input type="text" name="name" required>
+<form id="movieForm" class="movie-form">
+  <h2 class="movie-form__title">Ajouter un film</h2>
+
+  <div class="movie-form__group">
+    <label class="movie-form__label">Titre</label>
+    <input class="movie-form__input" type="text" name="name" required>
   </div>
 
-  <div>
-    <label>Réalisateur</label>
-    <input type="text" name="director" required>
+  <div class="movie-form__group">
+    <label class="movie-form__label">Réalisateur</label>
+    <input class="movie-form__input" type="text" name="director" required>
   </div>
 
-  <div>
-    <label>Année</label>
-    <input type="number" name="year" min="1900" max="2030" required>
+  <div class="movie-form__group">
+    <label class="movie-form__label">Année</label>
+    <input class="movie-form__input" type="number" name="year" min="1900" max="2030" required>
   </div>
 
-  <div>
-    <label>Durée (min)</label>
-    <input type="number" name="length" min="1" required>
+  <div class="movie-form__group">
+    <label class="movie-form__label">Durée (min)</label>
+    <input class="movie-form__input" type="number" name="length" min="1" required>
   </div>
 
-  <div>
-    <label>Description</label>
-    <input type="text" name="description" required>
+  <div class="movie-form__group">
+    <label class="movie-form__label">Description</label>
+    <input class="movie-form__input" type="text" name="description" required>
   </div>
 
-  <div>
-    <label>Catégorie</label>
-    <select id="id_category" name="id_category" required>
+  <div class="movie-form__group">
+    <label class="movie-form__label">Catégorie</label>
+    <select class="movie-form__select" id="id_category" name="id_category" required>
       <option value="">Choisir...</option>
     </select>
   </div>
 
-  <div>
-    <label>Image</label>
-    <input type="text" name="image" required>
+  <div class="movie-form__group">
+    <label class="movie-form__label">Image</label>
+    <input class="movie-form__input" type="text" name="image" required>
   </div>
 
-  <div>
-    <label>Lien Trailer</label>
-    <input type="url" name="trailer" required>
+  <div class="movie-form__group">
+    <label class="movie-form__label">Lien Trailer</label>
+    <input class="movie-form__input" type="url" name="trailer" required>
   </div>
 
-  <div>
-    <label>Âge min</label>
-    <input type="number" name="min_age" min="0" required>
+  <div class="movie-form__group">
+    <label class="movie-form__label">Âge min</label>
+    <input class="movie-form__input" type="number" name="min_age" min="0" required>
   </div>
 
-  <button type="submit">Enregistrer</button>
+  <button class="movie-form__submit" type="submit">Enregistrer</button>
 </form>
-
-<!-- <div class="MovieForm font-sans">
-    <h2 class="MovieForm__title">Ajouter un film</h2>
-    <form class="MovieForm__formulaire" method="post">
-        <div class="MovieForm__item">
-            <label for="titre">Titre du film :</label>
-            <input class="MovieForm__champ" type="text" name="titre" required>
-        </div>
-
-        <div class="MovieForm__item">
-            <label for="realisateur">Réalisateur du film :</label>
-            <input class="MovieForm__champ" type="text" name="realisateur" required>
-        </div>
-
-        <div class="MovieForm__item">
-            <label for="date">Année de sortie du film :</label>
-            <input class="MovieForm__champ" type="number" name="date" required>
-        </div>
-
-        <div class="MovieForm__item">
-            <label for="duree">Durée du film (minute):</label>
-            <input class="MovieForm__champ" type="number" name="duree" required>
-        </div>
-
-        <div class="MovieForm__item">
-            <label for="synopsis">Synopsis du film :</label>
-            <input class="MovieForm__champ" type="textarea" name="synopsis" required>
-        </div>
-
-        <div class="MovieForm__item">
-            <label for="categorie">Categorie du film :</label>
-            <select class="MovieForm__champ" name="categorie" required>
-                {{listCategory}}
-            </select>
-        </div>
-
-        <div class="MovieForm__item">
-            <label for="image">Nom du fichier image :</label>
-            <input class="MovieForm__champ" type="text" name="image" required>
-        </div>
-
-        <div class="MovieForm__item">
-            <label for="trailer">URL du trailer :</label>
-            <input class="MovieForm__champ" type="url" name="trailer" required>
-        </div>
-
-        <div class="MovieForm__item">
-            <label for="age">Restriction d'age :</label>
-            <input class="MovieForm__champ" type="number" name="age" required>
-        </div>
-
-
-        <input onclick="{{handler}}" type="submit" value="AJOUTER" name="todo">
-    </form>
-</div> -->

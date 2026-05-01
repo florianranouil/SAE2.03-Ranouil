@@ -1,67 +1,65 @@
-/* ====== BLOCK : profile-form ====== */
-.profile-form {
-  width: 34rem; /* plus large */
+/* ====== BLOCK : movie-form ====== */
+.movie-form {
+  width: 34rem; /* PLUS LARGE */
   padding: 1.4rem; /* compact */
   background: #fff;
   border-radius: 0.6rem;
-  border: 1px solid #ddd;
   box-shadow: 0 0.3rem 1rem hsl(352, 100%, 34%);
   font-family: Arial, sans-serif;
+  /* CENTRAGE */
   margin: 2rem auto; /* auto = centré */
 }
 
-.profile-form__title {
+
+.movie-form__title {
   text-align: left;
   font-size: 1.6rem; /* un peu plus petit */
   margin-bottom: 1rem;
   color: #333;
 }
 
-
 /* ====== ELEMENTS ====== */
-.profile-form .form-group {
+.movie-form__group {
   margin-bottom: 0.8rem; /* réduit */
 }
 
-.profile-form label {
+.movie-form__label {
   display: block;
-  font-weight: 600;
   margin-bottom: 0.3rem;
   font-size: 1.2rem;
-  color: #333;
+  font-weight: 600;
+  color: #444;
 }
 
-.profile-form input[type="text"],
-.profile-form input[type="file"],
-.profile-form select {
+.movie-form__input,
+.movie-form__select {
   width: 100%;
   padding: 0.6rem; /* compact */
-  border: 1px solid #bbb;
-  border-radius: 0.5rem;
   font-size: 1.2rem;
-  background: #fafafa;
+  border: 0.1rem solid #ccc;
+  border-radius: 0.5rem;
   transition: border-color 0.2s;
 }
 
-.profile-form input:focus,
-.profile-form select:focus {
+.movie-form__input:focus,
+.movie-form__select:focus {
   border-color: hsl(352, 100%, 34%);
   outline: none;
 }
 
 /* ====== BUTTON ====== */
-.profile-form .btn-submit {
+.movie-form__submit {
   width: 100%;
-  padding: 0.8rem; /* compact */
+  padding: 0.8rem;
+  font-size: 1.3rem;
   background: hsl(352, 100%, 34%);
-  color: white;
+  color: #fff;
   border: none;
   border-radius: 0.5rem;
-  font-size: 1.3rem;
   cursor: pointer;
   transition: background 0.2s;
 }
 
-.profile-form .btn-submit:hover {
+.movie-form__submit:hover {
   background: hsl(352, 81%, 18%);
 }
