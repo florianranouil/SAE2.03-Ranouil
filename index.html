@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SAE2.03</title>
+</head>
+
+<body class="index">
+
+  <h1 class="title">SAE 2.03</h1>
+
+  <div class="nav">
+    <a href="admin/index.html" class="admin__btn">Admin</a>
+    <a href="app/index.html" class="app__btn">Application</a>
+  </div>
+
+  <!-- Boutons rapports -->
+  <div class="reports">
+    <a href="https://ranouil-sae203.mmi-limoges.fr/rapport.html" target="_blank" class="report__btn">
+      Rapport
+    </a>
+
+    <a href="https://ranouil-sae203.mmi-limoges.fr/rapport-realtime.html" target="_blank" class="report__btn">
+      Rapport Realtime
+    </a>
+  </div>
+
+</body>
+
+<style>
+
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Page */
+body.index {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: #000000;
+}
+
+/* Titre */
+.title {
+  font-size: 3rem;
+  margin-bottom: 3rem;
+  color: #ffffff;
+  letter-spacing: 1px;
+}
+
+/* Navigation */
+.nav {
+  display: flex;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+/* Boutons principaux */
+.admin__btn,
+.app__btn {
+  display: inline-block;
+  padding: 14px 32px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: white;
+  text-decoration: none;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Couleurs */
+.admin__btn {
+  background-color: #e74c3c;
+}
+
+.admin__btn:hover {
+  background-color: #c0392b;
+  transform: translateY(-2px);
+}
+
+.app__btn {
+  background-color: #3498db;
+}
+
+.app__btn:hover {
+  background-color: #2980b9;
+  transform: translateY(-2px);
+}
+
+/* Bloc rapports */
+.reports {
+  display: flex;
+  gap: 1rem;
+}
+
+/* Boutons rapport */
+.report__btn {
+  padding: 12px 24px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: white;
+  text-decoration: none;
+  border-radius: 8px;
+  background-color: #27ae60;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.report__btn:hover {
+  background-color: #1e8449;
+  transform: translateY(-2px);
+}
+
+</style>
+
+</html>

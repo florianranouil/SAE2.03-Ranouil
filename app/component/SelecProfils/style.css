@@ -1,0 +1,70 @@
+/* ====== GLOBAL ====== */
+body {
+    background-color: #000; /* Noir Netflix */
+    color: #fff;
+    font-family: Arial, sans-serif;
+}
+
+/* ====== CONTENEUR PRINCIPAL ====== */
+.profils-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 3rem;
+    padding: 5rem 2rem;
+}
+
+/* ====== CARTE PROFIL ====== */
+.profil {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    transition: transform 0.25s ease, filter 0.25s ease;
+}
+
+.profil img {
+    width: 14rem;
+    height: 14rem;
+    border-radius: 1rem; /* Netflix n'utilise pas des avatars ronds mais légèrement arrondis */
+    object-fit: cover;
+    border: 3px solid transparent;
+    transition: transform 0.25s ease, border-color 0.25s ease;
+}
+
+/* Effet hover Netflix */
+.profil:hover img {
+    transform: scale(1.08);
+    border-color: #e50914; /* Rouge Netflix */
+    filter: brightness(1.2);
+}
+
+.profil h3 {
+    margin-top: 1rem;
+    font-size: 1.8rem;
+    color: #fff;
+    text-align: center;
+}
+
+/* Âge */
+.profil p {
+    margin-top: 0.3rem;
+    font-size: 1.4rem;
+    color: #aaa;
+}
+
+/* ====== RESPONSIVE ====== */
+@media (max-width: 768px) {
+    .profils-container {
+        gap: 2rem;
+    }
+
+    .profil img {
+        width: 10rem;
+        height: 10rem;
+    }
+
+    .profil h3 {
+        font-size: 1.4rem;
+    }
+}

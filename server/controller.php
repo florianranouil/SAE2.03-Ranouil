@@ -150,7 +150,10 @@ function addProfileController(){
 }
 
 
-
+function readProfilsController(){
+    $profils = getAllProfils();
+    return $profils;
+}
 
 
 

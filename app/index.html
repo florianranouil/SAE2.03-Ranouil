@@ -9,7 +9,6 @@
 
   <body>
     <header id="header"></header>
-
     <section id="content"></section>
 
     <script type="module">
@@ -18,15 +17,28 @@
       import { ListeMovies } from "./component/ListeMovies/script.js";
       import { MovieDetail } from "./component/MovieDetail/script.js";
       import { Movie } from "./component/Movie/script.js";
+      import { SelecProfils } from "./component/SelecProfils/script.js";
+      import { DataProfils } from "./data/dataProfils.js";
 
+      // -----------------------------
+      // Définition des objets globaux
+      // -----------------------------
       window.C = {};
+      window.V = {};
 
+      // -----------------------------
+      // Handlers principaux
+      // -----------------------------
       C.handlerAbout = function () {
         alert("Ceci est une base de projet pour la SAE2.03 édition 2025. Bonne chance !");
       };
 
       C.handlerHome = function () {
         C.loadMovies();
+      };
+
+      C.handlerProfil = function () {
+        C.loadProfils();
       };
 
       C.handlerDetail = function (id) {
@@ -39,72 +51,9 @@
           });
       };
 
-C.loadMovies = function () {
-  DataMovie.requestMovies()
-    .then(function (categories) {
-      document.querySelector("#content").innerHTML =
-        ListeMovies.formatMany(categories, "C.handlerDetail");
-    })
-    .catch(function (error) {
-      console.error("Erreur lors du chargement des films :", error);
-    });
-};
-
-
-      C.start = function () {
-        document.querySelector("#header").innerHTML = NavBar.format("C.handlerAbout()", "C.handlerHome()");
-        C.loadMovies();
-      };
-
-      C.start();
-    </script>
-  </body>
-</html>
-
-
-<!-- <!DOCTYPE html>
-<html lang="fr">
-  <head>
-    <title>SAE2.03 APP</title>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./css/base.css" />
-    <link rel="stylesheet" href="./component/NavBar/style.css" />
-    <link rel="stylesheet" href="./component/MovieCategory/style.css" />
-    <link rel="stylesheet" href="./component/ListeMovies/style.css" />
-  </head>
-
-  <body>
-    <header id="header"></header>
-
-    <section id="content"></section>
-
-    <script type="module">
-      import { NavBar } from "./component/NavBar/script.js";
-      import { DataMovie } from "./data/dataMovie.js";
-      import { ListeMovies } from "./component/ListeMovies/script.js";
-      import { MovieDetail } from "./component/MovieDetail/script.js";
-
-      window.C = {};
-
-      C.handlerAbout = function () {
-        alert("Ceci est une base de projet pour la SAE2.03 édition 2025. Bonne chance !");
-      };
-
-      C.handlerHome = function () {
-        C.loadMovies();
-      };
-
-      C.handlerDetail = function (id) {
-        DataMovie.requestMovieDetails(id)
-          .then(function (movie) {
-            document.querySelector("#content").innerHTML = MovieDetail.format(movie);
-          })
-          .catch(function (error) {
-            console.error("Erreur lors du chargement du film :", error);
-          });
-      };
-
+      // -----------------------------
+      // Chargement des films
+      // -----------------------------
       C.loadMovies = function () {
         DataMovie.requestMovies()
           .then(function (categories) {
@@ -116,13 +65,63 @@ C.loadMovies = function () {
           });
       };
 
+      // -----------------------------
+      // Chargement des profils
+      // -----------------------------
+      C.loadProfils = async function () {
+        let content = document.querySelector("#content");
+        content.innerHTML = "";
+        V.renderSelecProfils();
+      };
+
+      // -----------------------------
+      // Fonctions de rendu (V)
+      // -----------------------------
+      V.renderListeFilms = function (data) {
+        let content = document.querySelector("#content");
+        content.innerHTML += ListeMovies.formatMany(data);
+      };
+
+      V.renderMovieDetail = async function (id) {
+        let data = await DataMovie.requestFullMovie(id);
+        let content = document.querySelector("#content");
+        content.innerHTML += MovieDetail.format(data);
+      };
+
+      V.renderMovieCategory = async function () {
+        let data = await DataCategory.requestCategoryExist();
+        let content = document.querySelector("#content");
+        content.innerHTML += MovieCategory.formatMany(data);
+
+        for (let c of data) {
+          let datafilm = await DataMovie.requestMoviesCategory(c.id);
+          let position = document.querySelector(".listeCateg" + c.id);
+          position.innerHTML = ListeMovies.formatMany(datafilm);
+        }
+      };
+
+      V.renderSelecProfils = async function () {
+        let content = document.querySelector("#content");
+        let data = await DataProfils.requestProfils();
+        content.innerHTML += SelecProfils.formatMany(data);
+      };
+
+      // -----------------------------
+      // Démarrage de l'application
+      // -----------------------------
       C.start = function () {
-        document.querySelector("#header").innerHTML =
-          NavBar.format("C.handlerAbout()", "C.handlerHome()");
-        C.loadMovies();
+        document.querySelector("#header").innerHTML = NavBar.format(
+          "C.handlerAbout()",
+          "C.handlerHome()",
+          "C.handlerProfil()"
+        );
+
+        // ⭐⭐ MODIFICATION ICI ⭐⭐
+        // On démarre directement sur la sélection des profils
+        C.loadProfils();
       };
 
       C.start();
     </script>
   </body>
-</html> -->
+</html>
