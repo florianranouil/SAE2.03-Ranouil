@@ -1,16 +1,53 @@
 /* ===== NAVBAR ===== */
 .navbar {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   padding: 1rem 2rem;
-  padding-top: 4rem;;
-  background-color: transparent;   /* Barre transparente */
+
+  background-color: transparent;
+  transition: background-color 0.3s ease; /* 🔥 transition fluide */
+
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   z-index: 100;
+}
+
+/* 🔥 NAVBAR AU SCROLL */
+.navbar.scrolled {
+  background-color: rgba(0, 0, 0, 0.9); /* noir */
+}
+
+/* 🔥 LIGNE DU HAUT */
+.navbar::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.4);
+  transition: background 0.3s ease;
+}
+
+/* 🔥 LIGNE DU BAS */
+.navbar::after {
+  content: "";
+  position: absolute;
+  bottom: 30px;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.4);
+  transition: background 0.3s ease;
+}
+
+/* 🔥 lignes plus discrètes au scroll */
+.navbar.scrolled::before,
+.navbar.scrolled::after {
+  background: rgba(255, 255, 255, 0.15);
 }
 
 /* Liste */
@@ -27,7 +64,7 @@
   position: relative;
   padding: 0.6rem 1.2rem;
 
-  color: #d1d1d1;                 /* Gris clair par défaut */
+  color: #d1d1d1;
   font-size: 1.4rem;
   cursor: pointer;
 
@@ -38,24 +75,22 @@
 .navbar__item::before {
   content: "";
   position: absolute;
-  inset: 0;                       /* Remplit tout l’item */
+  inset: 0;
   background: white;
-  border-radius: 0.4rem;
-
   opacity: 0;
   transform: scale(0.9);
   transition: opacity 0.2s ease, transform 0.2s ease;
-  z-index: -1;                    /* Derrière le texte */
+  z-index: -1;
 }
 
-/* Hover : rectangle blanc + texte gris foncé */
+/* Hover */
 .navbar__item:hover::before {
   opacity: 1;
   transform: scale(1);
 }
 
 .navbar__item:hover {
-  color: #333;                    /* Texte gris foncé */
+  color: #333;
 }
 
 /* ===== DESKTOP ===== */
@@ -71,19 +106,4 @@
   .navbar__item {
     font-size: 1.6rem;
   }
-}
-
-.navbar {
-  display: flex;
-  justify-content: flex-start;  /* Logo à gauche, menu à droite */
-  align-items: center;
-  padding: 1rem 2rem;
-
-  background-color: transparent;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-
-  z-index: 100;
 }

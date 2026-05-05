@@ -1,17 +1,28 @@
 /* ====== GLOBAL ====== */
 body {
-    background-color: #000; /* Noir Netflix */
+    background-color: #000;
     color: #fff;
     font-family: Arial, sans-serif;
+
+    /* 🔥 AJOUT : centrage vertical global */
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
 /* ====== CONTENEUR PRINCIPAL ====== */
 .profils-container {
     display: flex;
     justify-content: center;
+    align-items: center; /* 🔥 centre verticalement les profils */
     flex-wrap: wrap;
     gap: 3rem;
-    padding: 5rem 2rem;
+
+    /* 🔥 AJOUT : prend toute la hauteur restante */
+    flex: 1;
+
+    /* 🔥 AJOUT : descend un peu les profils */
+    padding: 6rem 2rem 2rem;
 }
 
 /* ====== CARTE PROFIL ====== */
@@ -26,7 +37,7 @@ body {
 .profil img {
     width: 14rem;
     height: 14rem;
-    border-radius: 1rem; /* Netflix n'utilise pas des avatars ronds mais légèrement arrondis */
+    border-radius: 1rem;
     object-fit: cover;
     border: 3px solid transparent;
     transition: transform 0.25s ease, border-color 0.25s ease;
@@ -35,7 +46,7 @@ body {
 /* Effet hover Netflix */
 .profil:hover img {
     transform: scale(1.08);
-    border-color: #e50914; /* Rouge Netflix */
+    border-color: #e50914;
     filter: brightness(1.2);
 }
 
@@ -69,11 +80,7 @@ body {
     }
 }
 
-
-
-
-
-/* Bouton "Modifier" dans les profils */
+/* Bouton "Modifier" */
 .profil .edit-btn {
     margin-top: 0.6rem;
     padding: 0.5rem 0.9rem;
@@ -95,21 +102,9 @@ body {
     transform: scale(0.95);
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-/* Conteneur du formulaire */
+/* ====== FORMULAIRE ====== */
 .edit-profil-form {
-    max-width: 25rem; /* 400px */
+    max-width: 25rem;
     margin: 2.5rem auto;
     padding: 1.5rem;
     background: #1c1c1c;
@@ -120,7 +115,6 @@ body {
     font-family: Arial, sans-serif;
 }
 
-/* Titre */
 .edit-profil-form h2 {
     text-align: center;
     margin-bottom: 1.2rem;
@@ -128,7 +122,6 @@ body {
     color: #ffffff;
 }
 
-/* Labels */
 .edit-profil-form label {
     display: block;
     margin-top: 1rem;
@@ -138,7 +131,6 @@ body {
     font-size: 0.95rem;
 }
 
-/* Inputs */
 .edit-profil-form input,
 .edit-profil-form select {
     width: 100%;
@@ -157,7 +149,6 @@ body {
     outline: none;
 }
 
-/* Bouton enregistrer */
 .edit-profil-form button {
     width: 100%;
     margin-top: 1.5rem;
@@ -179,4 +170,3 @@ body {
 .edit-profil-form button:active {
     transform: scale(0.97);
 }
-

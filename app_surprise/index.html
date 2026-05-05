@@ -22,23 +22,14 @@
       import { SelecProfils } from "./component/SelecProfils/script.js";
       import { DataProfils } from "./data/dataProfils.js";
 
-      // -----------------------------
-      // Définition des objets globaux
-      // -----------------------------
       window.C = {};
       window.V = {};
 
-      // -----------------------------
-      // Sélection d’un profil
-      // -----------------------------
       C.selectProfil = function (id, age) {
         localStorage.setItem("profilAge", age);
         C.loadMovies();
       };
 
-      // -----------------------------
-      // Modifier un profil
-      // -----------------------------
       C.editProfil = async function (id) {
         let profils = await DataProfils.requestProfils();
         let profil = profils.find(p => p.id == id);
@@ -88,9 +79,6 @@
         });
       };
 
-      // -----------------------------
-      // Handlers principaux
-      // -----------------------------
       C.handlerAbout = function () {
         alert("Ceci est une base de projet pour la SAE2.03 édition 2025. Bonne chance !");
       };
@@ -113,9 +101,6 @@
           });
       };
 
-      // -----------------------------
-      // Chargement des films (avec âge)
-      // -----------------------------
       C.loadMovies = function () {
         let profilAge = parseInt(localStorage.getItem("profilAge") || 0);
 
@@ -136,18 +121,12 @@
           });
       };
 
-      // -----------------------------
-      // Chargement des profils
-      // -----------------------------
       C.loadProfils = async function () {
         let content = document.querySelector("#content");
         content.innerHTML = "";
         V.renderSelecProfils();
       };
 
-      // -----------------------------
-      // Fonctions de rendu (V)
-      // -----------------------------
       V.renderListeFilms = function (data) {
         let content = document.querySelector("#content");
         content.innerHTML += ListeMovies.formatMany(data);
@@ -159,35 +138,24 @@
         content.innerHTML += MovieDetail.format(data);
       };
 
-      V.renderMovieCategory = async function () {
-        let data = await DataCategory.requestCategoryExist();
-        let content = document.querySelector("#content");
-        content.innerHTML += MovieCategory.formatMany(data);
-
-        for (let c of data) {
-          let datafilm = await DataMovie.requestMoviesCategory(c.id);
-          let position = document.querySelector(".listeCateg" + c.id);
-          position.innerHTML = ListeMovies.formatMany(datafilm);
-        }
-      };
-
       V.renderSelecProfils = async function () {
         let content = document.querySelector("#content");
         let data = await DataProfils.requestProfils();
         content.innerHTML += SelecProfils.formatMany(data);
       };
 
-      // -----------------------------
-      // Démarrage de l'application
-      // -----------------------------
+      // 🔥 DÉMARRAGE
       C.start = function () {
 
-        // ⭐ Injection correcte de la NavBar
+        // Injection NavBar
         document.querySelector("#header").innerHTML = NavBar.format(
           "C.handlerAbout()",
           "C.handlerHome()",
           "C.handlerProfil()"
         );
+
+        // 🔥 AJOUT ICI → effet scroll
+        NavBar.initScrollEffect();
 
         C.loadProfils();
       };
