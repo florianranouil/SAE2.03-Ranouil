@@ -1,29 +1,12 @@
 <?php
 
-/** ARCHITECTURE PHP SERVEUR  : Rôle du fichier controller.php
- * 
- *  Dans ce fichier, on va définir les fonctions de contrôle qui vont traiter les requêtes HTTP.
- *  Les requêtes HTTP sont interprétées selon la valeur du paramètre 'todo' de la requête (voir script.php)
- *  Pour chaque valeur différente, on déclarera une fonction de contrôle différente.
- * 
- *  Les fonctions de contrôle vont éventuellement lire les paramètres additionnels de la requête, 
- *  les vérifier, puis appeler les fonctions du modèle (model.php) pour effectuer les opérations
- *  nécessaires sur la base de données.
- *  
- *  Si la fonction échoue à traiter la requête, elle retourne false (mauvais paramètres, erreur de connexion à la BDD, etc.)
- *  Sinon elle retourne le résultat de l'opération (des données ou un message) à includre dans la réponse HTTP.
- */
-
-/** Inclusion du fichier model.php
- *  Pour pouvoir utiliser les fonctions qui y sont déclarées et qui permettent
- *  de faire des opérations sur les données stockées en base de données.
- */
 require("model.php");
 
+function readMoviesController($age){
+    // On récupère les films filtrés par âge
+    $movies = getAllMovies($age);
 
-function readMoviesController(){
-    $movies = getAllMovies();
-
+    // Regroupement par catégories (inchangé)
     $groups = [];
     foreach ($movies as $movie) {
         $categoryName = $movie->type ?: 'Sans catégorie';
@@ -47,7 +30,6 @@ function readMoviesController(){
 }
 
 function addMovieController(){
-    // Validation des champs obligatoires
     $required = ['name', 'year', 'length', 'description', 'director', 'id_category', 'image', 'trailer', 'min_age'];
     foreach ($required as $field) {
         if (!isset($_POST[$field]) || empty(trim($_POST[$field]))) {
@@ -55,7 +37,6 @@ function addMovieController(){
         }
     }
 
-    // Validation spécifique
     if (!is_numeric($_POST['year']) || $_POST['year'] < 1900 || $_POST['year'] > date('Y') + 1) {
         return ['error' => 'Année invalide'];
     }
@@ -69,7 +50,6 @@ function addMovieController(){
         return ['error' => 'Catégorie invalide'];
     }
 
-    // Vérifier si la catégorie existe
     $categories = getCategories();
     $validCategory = false;
     foreach ($categories as $cat) {
@@ -82,7 +62,6 @@ function addMovieController(){
         return ['error' => 'Catégorie inexistante'];
     }
 
-    // Ajouter le film
     $result = addMovie(
         trim($_POST['name']),
         (int)$_POST['year'],
@@ -103,8 +82,7 @@ function addMovieController(){
 }
 
 function getCategoriesController(){
-    $categories = getCategories();
-    return $categories;
+    return getCategories();
 }
 
 function readMovieDetailController(){
@@ -120,7 +98,6 @@ function readMovieDetailController(){
 }
 
 function addProfileController(){
-    // Validation des champs obligatoires
     if (!isset($_POST['name']) || empty(trim($_POST['name']))) {
         return ['error' => 'Le nom du profil est obligatoire'];
     }
@@ -128,17 +105,14 @@ function addProfileController(){
         return ['error' => 'La restriction d\'âge est obligatoire'];
     }
 
-
-    // Validation de la restriction d'âge
     $valid_ages = ['0', '12', '16', '18'];
     if (!in_array($_POST['age_restriction'], $valid_ages)) {
         return ['error' => 'Restriction d\'âge invalide'];
     }
 
-    // Ajouter le profil à la base de données
     $result = addProfile(
         trim($_POST['name']),
-        $_POST['avatar'], // L'upload de l'avatar est géré côté client, on suppose que le chemin de l'avatar est envoyé dans ce champ
+        $_POST['avatar'],
         (int)$_POST['age_restriction']
     );
 
@@ -149,25 +123,49 @@ function addProfileController(){
     }
 }
 
-
 function readProfilsController(){
-    $profils = getAllProfils();
-    return $profils;
+    return getAllProfils();
 }
 
+# --------------------------------------------------------------------
+# ⭐⭐⭐ ITÉRATION 8 : MODIFIER UN PROFIL ⭐⭐⭐
+# --------------------------------------------------------------------
+function updateProfileController(){
 
+    // Vérification des champs obligatoires
+    if (!isset($_POST['id']) || !is_numeric($_POST['id'])) {
+        return ['error' => 'ID de profil invalide'];
+    }
 
+    if (!isset($_POST['name']) || empty(trim($_POST['name']))) {
+        return ['error' => 'Le nom est obligatoire'];
+    }
 
+    if (!isset($_POST['age_restriction']) || $_POST['age_restriction'] === '') {
+        return ['error' => 'La restriction d\'âge est obligatoire'];
+    }
 
+    $valid_ages = ['0', '12', '16', '18'];
+    if (!in_array($_POST['age_restriction'], $valid_ages)) {
+        return ['error' => 'Restriction d\'âge invalide'];
+    }
 
+    // Avatar facultatif
+    $avatar = isset($_POST['avatar']) ? trim($_POST['avatar']) : "";
 
+    // Appel au modèle
+    $result = updateProfile(
+        (int)$_POST['id'],
+        trim($_POST['name']),
+        $avatar,
+        (int)$_POST['age_restriction']
+    );
 
+    if ($result) {
+        return ['success' => 'Le profil a été modifié avec succès.'];
+    } else {
+        return ['error' => 'Erreur lors de la modification du profil.'];
+    }
+}
 
-
-
-
-
-
-
-
-
+?>

@@ -1,0 +1,65 @@
+/* ====== BLOCK : movie-form ====== */
+.movie-form {
+  width: 34rem; /* PLUS LARGE */
+  padding: 1.4rem; /* compact */
+  background: #fff;
+  border-radius: 0.6rem;
+  box-shadow: 0 0.3rem 1rem hsl(352, 100%, 34%);
+  font-family: Arial, sans-serif;
+  /* CENTRAGE */
+  margin: 2rem auto; /* auto = centré */
+}
+
+
+.movie-form__title {
+  text-align: left;
+  font-size: 1.6rem; /* un peu plus petit */
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+/* ====== ELEMENTS ====== */
+.movie-form__group {
+  margin-bottom: 0.8rem; /* réduit */
+}
+
+.movie-form__label {
+  display: block;
+  margin-bottom: 0.3rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #444;
+}
+
+.movie-form__input,
+.movie-form__select {
+  width: 100%;
+  padding: 0.6rem; /* compact */
+  font-size: 1.2rem;
+  border: 0.1rem solid #ccc;
+  border-radius: 0.5rem;
+  transition: border-color 0.2s;
+}
+
+.movie-form__input:focus,
+.movie-form__select:focus {
+  border-color: hsl(352, 100%, 34%);
+  outline: none;
+}
+
+/* ====== BUTTON ====== */
+.movie-form__submit {
+  width: 100%;
+  padding: 0.8rem;
+  font-size: 1.3rem;
+  background: hsl(352, 100%, 34%);
+  color: #fff;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.movie-form__submit:hover {
+  background: hsl(352, 81%, 18%);
+}

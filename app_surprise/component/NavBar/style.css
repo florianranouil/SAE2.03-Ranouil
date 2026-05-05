@@ -1,0 +1,89 @@
+/* ===== NAVBAR ===== */
+.navbar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem 2rem;
+  padding-top: 4rem;;
+  background-color: transparent;   /* Barre transparente */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100;
+}
+
+/* Liste */
+.navbar__list {
+  display: flex;
+  gap: 1rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* Items */
+.navbar__item {
+  position: relative;
+  padding: 0.6rem 1.2rem;
+
+  color: #d1d1d1;                 /* Gris clair par défaut */
+  font-size: 1.4rem;
+  cursor: pointer;
+
+  transition: color 0.2s ease;
+}
+
+/* Rectangle blanc au hover */
+.navbar__item::before {
+  content: "";
+  position: absolute;
+  inset: 0;                       /* Remplit tout l’item */
+  background: white;
+  border-radius: 0.4rem;
+
+  opacity: 0;
+  transform: scale(0.9);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  z-index: -1;                    /* Derrière le texte */
+}
+
+/* Hover : rectangle blanc + texte gris foncé */
+.navbar__item:hover::before {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.navbar__item:hover {
+  color: #333;                    /* Texte gris foncé */
+}
+
+/* ===== DESKTOP ===== */
+@media (min-width: 768px) {
+  .navbar {
+    padding: 1.5rem 3rem;
+  }
+
+  .navbar__list {
+    gap: 2rem;
+  }
+
+  .navbar__item {
+    font-size: 1.6rem;
+  }
+}
+
+.navbar {
+  display: flex;
+  justify-content: flex-start;  /* Logo à gauche, menu à droite */
+  align-items: center;
+  padding: 1rem 2rem;
+
+  background-color: transparent;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+
+  z-index: 100;
+}

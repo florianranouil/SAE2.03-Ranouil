@@ -1,0 +1,16 @@
+<div class="card" onclick="{{film__detailHandler}}">
+  <div class="card__upper">
+    <div class="card__image">
+      <img src="../server/images/{{film__image}}" alt="{{film__title}}" class="movie-poster">
+    </div>
+  </div>
+
+  <div class="card__text-container">
+    <p class="card-text">{{film__date}}</p>
+    <svg class="icon icon--movie">
+      <use xlink:href="#icon-movie"></use>
+    </svg>
+    <p class="card-text">{{film__type}}</p>
+  </div>
+  <h2 class="h2 grid-text">{{film__title}}</h2>
+</div>

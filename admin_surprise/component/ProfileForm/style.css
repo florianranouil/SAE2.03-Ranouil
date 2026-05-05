@@ -1,0 +1,67 @@
+/* ====== BLOCK : profile-form ====== */
+.profile-form {
+  width: 34rem; /* plus large */
+  padding: 1.4rem; /* compact */
+  background: #fff;
+  border-radius: 0.6rem;
+  border: 1px solid #ddd;
+  box-shadow: 0 0.3rem 1rem hsl(352, 100%, 34%);
+  font-family: Arial, sans-serif;
+  margin: 2rem auto; /* auto = centré */
+}
+
+.profile-form__title {
+  text-align: left;
+  font-size: 1.6rem; /* un peu plus petit */
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+
+/* ====== ELEMENTS ====== */
+.profile-form .form-group {
+  margin-bottom: 0.8rem; /* réduit */
+}
+
+.profile-form label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 0.3rem;
+  font-size: 1.2rem;
+  color: #333;
+}
+
+.profile-form input[type="text"],
+.profile-form input[type="file"],
+.profile-form select {
+  width: 100%;
+  padding: 0.6rem; /* compact */
+  border: 1px solid #bbb;
+  border-radius: 0.5rem;
+  font-size: 1.2rem;
+  background: #fafafa;
+  transition: border-color 0.2s;
+}
+
+.profile-form input:focus,
+.profile-form select:focus {
+  border-color: hsl(352, 100%, 34%);
+  outline: none;
+}
+
+/* ====== BUTTON ====== */
+.profile-form .btn-submit {
+  width: 100%;
+  padding: 0.8rem; /* compact */
+  background: hsl(352, 100%, 34%);
+  color: white;
+  border: none;
+  border-radius: 0.5rem;
+  font-size: 1.3rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.profile-form .btn-submit:hover {
+  background: hsl(352, 81%, 18%);
+}

@@ -4,6 +4,8 @@
     <title>SAE2.03 APP</title>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- CSS global -->
     <link rel="stylesheet" href="./css/base.css" />
   </head>
 
@@ -26,9 +28,6 @@
       window.C = {};
       window.V = {};
 
-      // ⭐⭐ IMPORTANT POUR ONCLICK ⭐⭐
-      window.C = C;
-
       // -----------------------------
       // Sélection d’un profil
       // -----------------------------
@@ -38,7 +37,7 @@
       };
 
       // -----------------------------
-      // ⭐⭐ ITÉRATION 8 : Modifier un profil ⭐⭐
+      // Modifier un profil
       // -----------------------------
       C.editProfil = async function (id) {
         let profils = await DataProfils.requestProfils();
@@ -182,6 +181,8 @@
       // Démarrage de l'application
       // -----------------------------
       C.start = function () {
+
+        // ⭐ Injection correcte de la NavBar
         document.querySelector("#header").innerHTML = NavBar.format(
           "C.handlerAbout()",
           "C.handlerHome()",

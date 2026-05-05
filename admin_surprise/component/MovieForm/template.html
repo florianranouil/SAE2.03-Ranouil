@@ -1,0 +1,54 @@
+<link rel="stylesheet" href="component/MovieForm/style.css">
+
+<form id="movieForm" class="movie-form">
+  <h2 class="movie-form__title">Ajouter un film</h2>
+
+  <div class="movie-form__group">
+    <label class="movie-form__label">Titre</label>
+    <input class="movie-form__input" type="text" name="name" required>
+  </div>
+
+  <div class="movie-form__group">
+    <label class="movie-form__label">Réalisateur</label>
+    <input class="movie-form__input" type="text" name="director" required>
+  </div>
+
+  <div class="movie-form__group">
+    <label class="movie-form__label">Année</label>
+    <input class="movie-form__input" type="number" name="year" min="1900" max="2030" required>
+  </div>
+
+  <div class="movie-form__group">
+    <label class="movie-form__label">Durée (min)</label>
+    <input class="movie-form__input" type="number" name="length" min="1" required>
+  </div>
+
+  <div class="movie-form__group">
+    <label class="movie-form__label">Description</label>
+    <input class="movie-form__input" type="text" name="description" required>
+  </div>
+
+  <div class="movie-form__group">
+    <label class="movie-form__label">Catégorie</label>
+    <select class="movie-form__select" id="id_category" name="id_category" required>
+      <option value="">Choisir...</option>
+    </select>
+  </div>
+
+  <div class="movie-form__group">
+    <label class="movie-form__label">Image</label>
+    <input class="movie-form__input" type="text" name="image" required>
+  </div>
+
+  <div class="movie-form__group">
+    <label class="movie-form__label">Lien Trailer</label>
+    <input class="movie-form__input" type="url" name="trailer" required>
+  </div>
+
+  <div class="movie-form__group">
+    <label class="movie-form__label">Âge min</label>
+    <input class="movie-form__input" type="number" name="min_age" min="0" required>
+  </div>
+
+  <button class="movie-form__submit" type="submit">Enregistrer</button>
+</form>
