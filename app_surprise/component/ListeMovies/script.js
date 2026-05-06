@@ -9,6 +9,7 @@ let ListeMovies = {};
 ListeMovies.format = function (film, handler) {
     let html = templateLi;
     html = html.replaceAll('{{nomFilm}}', film.title);
+    html = html.replaceAll('{{nomDirector}}', film.director);
     html = html.replaceAll('{{imageFilm}}', film.image);
     html = html.replaceAll('{{anneeFilm}}', film.date);
     html = html.replaceAll('{{handler}}', `${handler}(${film.id})`);
@@ -20,7 +21,7 @@ ListeMovies.formatMany = function (categories, handler) {
 
     let liste = "";
     for (const category of categories) {
-        liste += `<h2>${category.category}</h2>`; // <-- CORRECTION ICI
+        liste += `<h2>${category.category}</h2>`;
         for (const film of category.movies) {
             liste += ListeMovies.format(film, handler);
         }

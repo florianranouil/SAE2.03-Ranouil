@@ -6,14 +6,10 @@ error_reporting(E_ALL);
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 
-/**
- * Inclusion du fichier controller.php.
- */
+
 require("controller.php");
 
-/**
- * Vérifie si la variable 'todo' est définie dans la requête.
- */
+
 if ( isset($_REQUEST['todo']) ){
 
   header('Content-Type: application/json');
@@ -23,7 +19,7 @@ if ( isset($_REQUEST['todo']) ){
   switch($todo){
 
     case 'readmovies':
-      // ⭐⭐ ITÉRATION 7 ⭐⭐
+
       $age = isset($_GET["age"]) ? intval($_GET["age"]) : 0;
       $data = readMoviesController($age);
       break;
@@ -48,7 +44,7 @@ if ( isset($_REQUEST['todo']) ){
       $data = readProfilsController();
       break;
 
-    // ⭐⭐⭐ ITÉRATION 8 : MODIFIER UN PROFIL ⭐⭐⭐
+ 
     case 'updateprofile':
       $data = updateProfileController();
       break;

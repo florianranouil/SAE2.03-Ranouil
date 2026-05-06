@@ -33,112 +33,135 @@
 
 <style>
 
-/* Reset */
+/* RESET */
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap");
+
+/* RESET */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "DM Sans", sans-serif;
 }
 
-/* Page */
+/* ===== PAGE (MOBILE FIRST) ===== */
 body.index {
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
-  background-color: #000000;
+  padding: 2rem;
+  background: #0a1a2f; /* bleu foncé */
+  color: #ffffff;      /* texte blanc */
+  text-align: center;
 }
 
-/* Titre */
+/* ===== TITRE ===== */
 .title {
-  font-size: 3rem;
-  margin-bottom: 3rem;
-  color: #ffffff;
+  font-size: 2.4rem;
+  margin-bottom: 2.5rem;
+  font-weight: 700;
   letter-spacing: 1px;
 }
 
-/* Navigation */
+/* ===== NAVIGATION ===== */
 .nav {
   display: flex;
-  gap: 2rem;
-  margin-bottom: 2rem;
+  flex-direction: column;
+  gap: 1.2rem;
+  width: 100%;
+  max-width: 22rem;
+  margin-bottom: 2.5rem;
 }
 
-/* Boutons principaux */
+/* ===== BOUTONS PRINCIPAUX ===== */
 .admin__btn,
 .app__btn {
-  display: inline-block;
-  padding: 14px 32px;
+  display: block;
+  width: 100%;
+  padding: 14px 0;
   font-size: 1.2rem;
   font-weight: 600;
-  color: white;
+  color: #ffffff;
   text-decoration: none;
-  border-radius: 8px;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  border-radius: 6px;
+  background: #112840; /* bleu foncé plus clair */
+  border: 1px solid rgba(255,255,255,0.15);
+  transition: all 0.25s ease;
 }
 
-/* Couleurs */
+.admin__btn:hover,
+.app__btn:hover {
+  background: #1e3a5f; /* bleu pro */
+  transform: translateY(-3px);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+}
+
+/* ===== VARIANTE ADMIN ===== */
 .admin__btn {
-  background-color: #e74c3c;
+  background: #112840;
 }
 
 .admin__btn:hover {
-  background-color: #c0392b;
-  transform: translateY(-2px);
+  background: #1e3a5f
 }
 
-.app__btn {
-  background-color: #3498db;
-}
-
-.app__btn:hover {
-  background-color: #2980b9;
-  transform: translateY(-2px);
-}
-
-/* Bloc rapports */
+/* ===== RAPPORTS ===== */
 .reports {
   display: flex;
+  flex-direction: column;
   gap: 1rem;
+  width: 100%;
+  max-width: 22rem;
 }
 
-/* Boutons rapport */
+/* ===== BOUTONS RAPPORT ===== */
 .report__btn {
-  padding: 12px 24px;
+  padding: 12px 0;
   font-size: 1rem;
   font-weight: 600;
-  color: white;
+  color: #ffffff;
   text-decoration: none;
-  border-radius: 8px;
-  background-color: #27ae60;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  border-radius: 6px;
+  background: #112840;
+  border: 1px solid rgba(255,255,255,0.15);
+  transition: all 0.25s ease;
 }
 
 .report__btn:hover {
-  background-color: #1e8449;
-  transform: translateY(-2px);
+  background: #1e3a5f;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.25);
 }
 
-@media(minwidth: 600px) {
+/* ===== DESKTOP ===== */
+@media (min-width: 768px) {
+
+  body.index {
+    padding: 0;
+  }
+
   .nav {
-    gap: 3rem;
+    flex-direction: row;
+    justify-content: center;
+    max-width: none;
+  }
+
+  .reports {
+    flex-direction: row;
+    justify-content: center;
+    max-width: none;
   }
 
   .admin__btn,
-  .app__btn {
-    font-size: 1.5rem;
-    padding: 16px 40px;
-  }
-
+  .app__btn,
   .report__btn {
-    font-size: 1.2rem;
+    width: auto;
     padding: 14px 32px;
   }
 }
+
 
 </style>
 

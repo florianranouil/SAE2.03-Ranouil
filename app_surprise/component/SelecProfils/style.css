@@ -14,6 +14,7 @@ body {
     justify-content: center;
     align-items: center; 
     flex-wrap: wrap;
+    margin-top: 4rem;
     gap: 3rem;
     flex: 1;
     padding: 6rem 2rem 2rem;
@@ -37,10 +38,9 @@ body {
     transition: transform 0.25s ease, border-color 0.25s ease;
 }
 
-/* Effet hover Netflix */
 .profil:hover img {
     transform: scale(1.08);
-    border-color: var(--color-red);
+    border-color: var(--color-white);
     filter: brightness(1.2);
 }
 
@@ -51,7 +51,7 @@ body {
     text-align: center;
 }
 
-/* Âge */
+
 .profil p {
     margin-top: 0.3rem;
     font-size: 1.4rem;
@@ -74,13 +74,13 @@ body {
     }
 }
 
-/* Bouton "Modifier" */
+
 .profil .edit-btn {
     margin-top: 0.6rem;
     padding: 0.5rem 0.9rem;
-    background: var(--color-red);
-    color: white;
-    border: none;
+    background: transparent;
+    color: var(--color-white);
+    border: 1px solid var(--color-white);
     border-radius: 0.4rem;
     font-size: 0.9rem;
     cursor: pointer;
@@ -101,9 +101,10 @@ body {
     max-width: 25rem;
     margin: 2.5rem auto;
     padding: 1.5rem;
-    background: #1c1c1c;
+    margin-top:10rem;
+    background: var(--color-dark-blue);
     border-radius: 0.75rem;
-    border: 1px solid #333;
+    border: 1px solid var(--color-white);
     box-shadow: 0 0.25rem 1rem rgba(0,0,0,0.4);
     color: var(--color-white);
     font-family: Arial, sans-serif;
@@ -130,8 +131,8 @@ body {
     width: 100%;
     padding: 0.7rem;
     border-radius: 0.4rem;
-    border: 1px solid #555;
-    background: #2a2a2a;
+    border: 1px solid var(--color-white);
+    background: var(--color-dark-blue);
     color: var(--color-white);
     font-size: 1rem;
     transition: border-color 0.2s;
@@ -139,7 +140,7 @@ body {
 
 .edit-profil-form input:focus,
 .edit-profil-form select:focus {
-    border-color: var(--color-red);
+    border-color: var(--color-white);
     outline: none;
 }
 
@@ -147,9 +148,9 @@ body {
     width: 100%;
     margin-top: 1.5rem;
     padding: 0.8rem;
-    background: var(--color-red);
+    background: transparent;
     color: var(--color-white);
-    border: none;
+    border: 1px solid var(--color-white);
     border-radius: 0.4rem;
     font-size: 1.1rem;
     cursor: pointer;

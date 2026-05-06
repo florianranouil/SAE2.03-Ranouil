@@ -13,8 +13,6 @@ SelecProfils.format = function (profil) {
     html = html.replaceAll("{{name}}", profil.name);
     html = html.replaceAll("{{avatar}}", profil.avatar);
     html = html.replaceAll("{{age}}", profil.age_restriction);
-
-    // Action principale : sélectionner le profil
     html = html.replaceAll("{{action}}", `C.selectProfil(${profil.id}, ${profil.age_restriction})`);
 
     return html;

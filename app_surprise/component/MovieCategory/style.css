@@ -4,8 +4,8 @@
 
 .movie-category__title {
   margin-bottom: 1rem;
-  font-size: 1.8rem;
-  color: var(--color-white);
+  font-size: 1.5rem;
+  color: var(--color-white--);
 }
 
 .movie-category__list {

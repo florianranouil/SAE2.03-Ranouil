@@ -2,7 +2,7 @@
 
 :root {
   /* Primitive Tokens */
-  --color-dark-blue: hsl(255, 41%, 11%);
+  --color-dark-blue: hsl(220, 36%, 10%);
   --color-white: hsl(0, 0%, 100%);
   --color-gray-light: hsl(0, 0%, 80%);
   --color-gray: hsl(0, 0%, 50%);

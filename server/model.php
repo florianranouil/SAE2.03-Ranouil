@@ -14,15 +14,11 @@ define("DBLOGIN", "usersae203");
 define("DBPWD", "nairolf13HARDEN!");
 
 
-/* ------------------------------
-   FILMS (PAS DE CHEMIN DYNAMIQUE)
-   ------------------------------ */
 
 function getAllMovies($age){
     $cnx = new PDO("mysql:host=".HOST.";dbname=".DBNAME, DBLOGIN, DBPWD);
 
-    // ⭐⭐ ITÉRATION 7 : filtrage par âge ⭐⭐
-    $sql = "SELECT m.id, m.name AS title, m.year AS date, 
+    $sql = "SELECT m.id, m.name AS title, m.director, m.year AS date, 
                    c.name AS type, m.image, m.min_age
             FROM Movie m 
             LEFT JOIN Category c ON m.id_category = c.id
@@ -63,8 +59,8 @@ function getCategories(){
 function getMovieById($id){
     $cnx = new PDO("mysql:host=".HOST.";dbname=".DBNAME, DBLOGIN, DBPWD);
 
-    $sql = "SELECT m.id, m.name AS title, m.year AS date, m.length, m.description,
-                   m.director, c.name AS type, m.image, m.trailer, m.min_age
+    $sql = "SELECT m.id, m.name AS title, m.director, m.year AS date, m.length, m.description,
+                     c.name AS type, m.image, m.trailer, m.min_age
             FROM Movie m
             LEFT JOIN Category c ON m.id_category = c.id
             WHERE m.id = ?";
@@ -76,9 +72,6 @@ function getMovieById($id){
 }
 
 
-/* ------------------------------
-   PROFILS (CHEMIN DYNAMIQUE)
-   ------------------------------ */
 
 function addProfile($name, $avatar, $age_restriction){
     try {
@@ -142,9 +135,7 @@ function getprofilID($id){
 }
 
 
-/* ------------------------------
-   ⭐⭐⭐ ITÉRATION 8 : UPDATE PROFIL ⭐⭐⭐
-   ------------------------------ */
+
 
 function updateProfile($id, $name, $avatar, $age_restriction){
     try {

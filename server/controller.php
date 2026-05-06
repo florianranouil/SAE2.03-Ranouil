@@ -3,10 +3,10 @@
 require("model.php");
 
 function readMoviesController($age){
-    // On récupère les films filtrés par âge
+    
     $movies = getAllMovies($age);
 
-    // Regroupement par catégories (inchangé)
+    
     $groups = [];
     foreach ($movies as $movie) {
         $categoryName = $movie->type ?: 'Sans catégorie';
@@ -127,12 +127,10 @@ function readProfilsController(){
     return getAllProfils();
 }
 
-# --------------------------------------------------------------------
-# ⭐⭐⭐ ITÉRATION 8 : MODIFIER UN PROFIL ⭐⭐⭐
-# --------------------------------------------------------------------
+
 function updateProfileController(){
 
-    // Vérification des champs obligatoires
+
     if (!isset($_POST['id']) || !is_numeric($_POST['id'])) {
         return ['error' => 'ID de profil invalide'];
     }
@@ -150,10 +148,9 @@ function updateProfileController(){
         return ['error' => 'Restriction d\'âge invalide'];
     }
 
-    // Avatar facultatif
     $avatar = isset($_POST['avatar']) ? trim($_POST['avatar']) : "";
 
-    // Appel au modèle
+
     $result = updateProfile(
         (int)$_POST['id'],
         trim($_POST['name']),
