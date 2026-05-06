@@ -1,34 +1,3 @@
-// let templateFile = await fetch('./component/ListeMovies/template.html');
-// let template = await templateFile.text();
-
-// let templateFileLi = await fetch('./component/ListeMovies/templateLi.html');
-// let templateLi = await templateFileLi.text();
-
-
-// let ListeMovies = {};
-
-// ListeMovies.format = function(film){
-//     let html= templateLi;
-//     html = html.replace('{{nomFilm}}', film.name);
-//     html = html.replace("{{imageFilm}}", film.image);
-//     html = html.replace("{{handler}}", "V.renderMovieDetail("+film.id+");");
-//     return html;
-// }
-
-// ListeMovies.formatMany = function(data){
-//     let html = template;
-
-//     let liste = "";
-//     for (const film of data) {
-//         liste += ListeMovies.format(film);
-//     }
-
-//     html = html.replace("{{listeItems}}", liste);
-//     return html;
-// }
-
-// export {ListeMovies};
-
 let templateFile = await fetch('./component/ListeMovies/template.html');
 let template = await templateFile.text();
 

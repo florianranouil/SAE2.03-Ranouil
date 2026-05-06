@@ -1,10 +1,8 @@
 /* ====== GLOBAL ====== */
 body {
-    background-color: #000;
-    color: #fff;
+    background-color: var(--color-dark-blue);
+    color: var(--color-white);
     font-family: Arial, sans-serif;
-
-    /* 🔥 AJOUT : centrage vertical global */
     min-height: 100vh;
     display: flex;
     flex-direction: column;
@@ -14,14 +12,10 @@ body {
 .profils-container {
     display: flex;
     justify-content: center;
-    align-items: center; /* 🔥 centre verticalement les profils */
+    align-items: center; 
     flex-wrap: wrap;
     gap: 3rem;
-
-    /* 🔥 AJOUT : prend toute la hauteur restante */
     flex: 1;
-
-    /* 🔥 AJOUT : descend un peu les profils */
     padding: 6rem 2rem 2rem;
 }
 
@@ -46,14 +40,14 @@ body {
 /* Effet hover Netflix */
 .profil:hover img {
     transform: scale(1.08);
-    border-color: #e50914;
+    border-color: var(--color-red);
     filter: brightness(1.2);
 }
 
 .profil h3 {
     margin-top: 1rem;
     font-size: 1.8rem;
-    color: #fff;
+    color: var(--color-white);
     text-align: center;
 }
 
@@ -61,7 +55,7 @@ body {
 .profil p {
     margin-top: 0.3rem;
     font-size: 1.4rem;
-    color: #aaa;
+    color: var(--color-gray-light);
 }
 
 /* ====== RESPONSIVE ====== */
@@ -84,7 +78,7 @@ body {
 .profil .edit-btn {
     margin-top: 0.6rem;
     padding: 0.5rem 0.9rem;
-    background: #e50914;
+    background: var(--color-red);
     color: white;
     border: none;
     border-radius: 0.4rem;
@@ -94,7 +88,7 @@ body {
 }
 
 .profil .edit-btn:hover {
-    background: #c10811;
+    background: var(--color-red-dark);
     transform: scale(1.05);
 }
 
@@ -111,7 +105,7 @@ body {
     border-radius: 0.75rem;
     border: 1px solid #333;
     box-shadow: 0 0.25rem 1rem rgba(0,0,0,0.4);
-    color: white;
+    color: var(--color-white);
     font-family: Arial, sans-serif;
 }
 
@@ -119,7 +113,7 @@ body {
     text-align: center;
     margin-bottom: 1.2rem;
     font-size: 1.4rem;
-    color: #ffffff;
+    color: var(--color-white);
 }
 
 .edit-profil-form label {
@@ -127,7 +121,7 @@ body {
     margin-top: 1rem;
     margin-bottom: 0.4rem;
     font-weight: bold;
-    color: #ddd;
+    color: var(--color-gray-light);
     font-size: 0.95rem;
 }
 
@@ -138,14 +132,14 @@ body {
     border-radius: 0.4rem;
     border: 1px solid #555;
     background: #2a2a2a;
-    color: white;
+    color: var(--color-white);
     font-size: 1rem;
     transition: border-color 0.2s;
 }
 
 .edit-profil-form input:focus,
 .edit-profil-form select:focus {
-    border-color: #e50914;
+    border-color: var(--color-red);
     outline: none;
 }
 
@@ -153,8 +147,8 @@ body {
     width: 100%;
     margin-top: 1.5rem;
     padding: 0.8rem;
-    background: #e50914;
-    color: white;
+    background: var(--color-red);
+    color: var(--color-white);
     border: none;
     border-radius: 0.4rem;
     font-size: 1.1rem;
@@ -163,7 +157,7 @@ body {
 }
 
 .edit-profil-form button:hover {
-    background: #c10811;
+    background: var(--color-red-dark);
     transform: scale(1.03);
 }
 

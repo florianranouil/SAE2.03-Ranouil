@@ -3,51 +3,51 @@
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  padding: 1rem 2rem;
-
+  padding: 0;
   background-color: transparent;
-  transition: background-color 0.3s ease; /* 🔥 transition fluide */
-
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   z-index: 100;
+  height: 5.625rem; 
+  transition: height 0.3s ease;
 }
 
-/* 🔥 NAVBAR AU SCROLL */
+/* NAVBAR AU SCROLL */
 .navbar.scrolled {
-  background-color: rgba(0, 0, 0, 0.9); /* noir */
+  background-color: var(--color-dark-blue);
+  transition: background-color 0.3s ease, height 0.3s ease;
+  height: 4.875rem; 
 }
 
-/* 🔥 LIGNE DU HAUT */
+/* LIGNE DU HAUT */
 .navbar::before {
   content: "";
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
-  height: 1px;
-  background: rgba(255, 255, 255, 0.4);
-  transition: background 0.3s ease;
+  height: 0.0625rem; 
+  background: var(--color-white--);
 }
 
-/* 🔥 LIGNE DU BAS */
+/* LIGNE DU BAS */
 .navbar::after {
   content: "";
   position: absolute;
-  bottom: 30px;
+  bottom: 0; 
   left: 0;
   width: 100%;
-  height: 1px;
-  background: rgba(255, 255, 255, 0.4);
+  height: 0.0625rem; 
+  background: var(--color-white--);
   transition: background 0.3s ease;
 }
 
-/* 🔥 lignes plus discrètes au scroll */
+/* lignes au scroll */
 .navbar.scrolled::before,
 .navbar.scrolled::after {
-  background: rgba(255, 255, 255, 0.15);
+  background: var(--color-white--);
 }
 
 /* Liste */
@@ -63,12 +63,11 @@
 .navbar__item {
   position: relative;
   padding: 0.6rem 1.2rem;
-
-  color: #d1d1d1;
+  color: var(--color-white--);
   font-size: 1.4rem;
   cursor: pointer;
-
   transition: color 0.2s ease;
+  z-index: 1;
 }
 
 /* Rectangle blanc au hover */
@@ -76,7 +75,7 @@
   content: "";
   position: absolute;
   inset: 0;
-  background: white;
+  background: var(--color-white);
   opacity: 0;
   transform: scale(0.9);
   transition: opacity 0.2s ease, transform 0.2s ease;
@@ -90,20 +89,6 @@
 }
 
 .navbar__item:hover {
-  color: #333;
+  color: var(--color-dark-blue);
 }
 
-/* ===== DESKTOP ===== */
-@media (min-width: 768px) {
-  .navbar {
-    padding: 1.5rem 3rem;
-  }
-
-  .navbar__list {
-    gap: 2rem;
-  }
-
-  .navbar__item {
-    font-size: 1.6rem;
-  }
-}

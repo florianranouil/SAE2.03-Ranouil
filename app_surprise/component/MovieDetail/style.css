@@ -1,7 +1,7 @@
 /* ====== GLOBAL ====== */
 body {
-    background-color: #000;
-    color: #fff;
+    background-color: var(--color-dark-blue);
+    color: var(--color-white);
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
@@ -11,6 +11,7 @@ body {
 .movie-detail {
     width: 100%;
     padding: 1.5rem;
+    padding-top: 10rem;
     max-width: 60rem;
     margin: 0 auto;
 }
@@ -30,7 +31,6 @@ body {
     height: 30rem;
     object-fit: cover;
     border-radius: 1rem;
-    box-shadow: 0 0.5rem 2rem rgba(255, 0, 0, 0.25);
 }
 
 /* Texte */
@@ -43,17 +43,17 @@ body {
     font-size: 2.2rem;
     font-weight: 700;
     margin-bottom: 1.5rem;
-    color: #e50914;
+    color: var(--color-red);
 }
 
 .movie-detail__info {
     font-size: 1.4rem;
     margin-bottom: 0.8rem;
-    color: #ddd;
+    color: var(--color-gray-light);
 }
 
 .movie-detail__info strong {
-    color: #fff;
+    color: var(--color-white);
     font-weight: 700;
 }
 
@@ -65,7 +65,7 @@ body {
 .movie-detail__trailer-title {
     font-size: 1.8rem;
     margin-bottom: 1rem;
-    color: #e50914;
+    color: var(--color-red);
 }
 
 .movie-detail__trailer iframe {
@@ -73,7 +73,6 @@ body {
     height: 20rem;
     border-radius: 1rem;
     border: none;
-    box-shadow: 0 0 2rem rgba(255, 0, 0, 0.25);
 }
 
 /* ====== DESKTOP ====== */

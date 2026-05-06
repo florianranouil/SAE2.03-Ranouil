@@ -5,7 +5,7 @@
 .movie-category__title {
   margin-bottom: 1rem;
   font-size: 1.8rem;
-  color: var(--color-fg);
+  color: var(--color-white);
 }
 
 .movie-category__list {
@@ -13,3 +13,4 @@
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 1.5rem;
 }
+

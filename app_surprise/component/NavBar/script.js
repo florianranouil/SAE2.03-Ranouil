@@ -13,13 +13,13 @@ NavBar.format = function (
   html = html.replaceAll("{{hHome}}", hHome);
   html = html.replaceAll("{{hProfil}}", hProfil);
 
-  // ✅ LOGO
+
   html = html.replaceAll("{{logo}}", "/server/images/logo1.png");
 
   return html;
 };
 
-/* 🔥 AJOUT : gestion du scroll */
+
 NavBar.initScrollEffect = function () {
   window.addEventListener("scroll", () => {
     const navbar = document.querySelector(".navbar");
