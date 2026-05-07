@@ -8,19 +8,16 @@ body {
     flex-direction: column;
 }
 
-/* ====== CONTENEUR PRINCIPAL ====== */
 .profils-container {
     display: flex;
     justify-content: center;
     align-items: center; 
     flex-wrap: wrap;
-    margin-top: 4rem;
     gap: 3rem;
     flex: 1;
-    padding: 6rem 2rem 2rem;
+    padding: 4rem 2rem 2rem;
 }
 
-/* ====== CARTE PROFIL ====== */
 .profil {
     display: flex;
     flex-direction: column;
@@ -58,22 +55,16 @@ body {
     color: var(--color-gray-light);
 }
 
-/* ====== RESPONSIVE ====== */
-@media (max-width: 768px) {
-    .profils-container {
-        gap: 2rem;
-    }
-
-    .profil img {
-        width: 10rem;
-        height: 10rem;
-    }
-
-    .profil h3 {
-        font-size: 1.4rem;
+@media (min-width: 480px) {
+    .navbar__list {
+        display: flex;
+        flex-direction: row;
+        position: static;
+        background: transparent;
+        border: none;
+        padding: 1rem;
     }
 }
-
 
 .profil .edit-btn {
     margin-top: 0.6rem;
@@ -96,7 +87,6 @@ body {
     transform: scale(0.95);
 }
 
-/* ====== FORMULAIRE ====== */
 .edit-profil-form {
     max-width: 25rem;
     margin: 2.5rem auto;
@@ -164,4 +154,13 @@ body {
 
 .edit-profil-form button:active {
     transform: scale(0.97);
+}
+
+.profil-title {
+    color: var(--color-white);
+    font-size: 4rem;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 8rem;
+    margin-bottom: 0.8rem;
 }

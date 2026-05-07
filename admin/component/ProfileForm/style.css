@@ -1,26 +1,25 @@
-/* ====== BLOCK : profile-form ====== */
 .profile-form {
-  width: 34rem; /* plus large */
-  padding: 1.4rem; /* compact */
+  width: 34rem; 
+  padding: 1.4rem; 
   background: #fff;
   border-radius: 0.6rem;
   border: 1px solid #ddd;
   box-shadow: 0 0.3rem 1rem hsl(352, 100%, 34%);
   font-family: Arial, sans-serif;
-  margin: 2rem auto; /* auto = centré */
+  margin: 2rem auto; 
 }
 
 .profile-form__title {
   text-align: left;
-  font-size: 1.6rem; /* un peu plus petit */
+  font-size: 1.6rem; 
   margin-bottom: 1rem;
   color: #333;
 }
 
 
-/* ====== ELEMENTS ====== */
+
 .profile-form .form-group {
-  margin-bottom: 0.8rem; /* réduit */
+  margin-bottom: 0.8rem; 
 }
 
 .profile-form label {
@@ -35,7 +34,7 @@
 .profile-form input[type="file"],
 .profile-form select {
   width: 100%;
-  padding: 0.6rem; /* compact */
+  padding: 0.6rem; 
   border: 1px solid #bbb;
   border-radius: 0.5rem;
   font-size: 1.2rem;
@@ -49,7 +48,7 @@
   outline: none;
 }
 
-/* ====== BUTTON ====== */
+
 .profile-form .btn-submit {
   width: 100%;
   padding: 0.8rem; /* compact */

@@ -34,4 +34,16 @@ NavBar.initScrollEffect = function () {
   });
 };
 
+NavBar.initBurger = function () {
+  const burger = document.querySelector("#burger");
+  const menu = document.querySelector("#navMenu");
+
+  if (!burger || !menu) return;
+
+  burger.addEventListener("click", () => {
+    menu.classList.toggle("active");
+  });
+};
+
+
 export { NavBar };

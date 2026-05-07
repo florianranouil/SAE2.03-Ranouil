@@ -1,8 +1,6 @@
 <?php
-// Activer le rapport d'erreurs PHP
 error_reporting(E_ALL);
 
-// Forcer l'affichage des erreurs à l'écran
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 

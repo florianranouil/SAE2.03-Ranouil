@@ -1,4 +1,3 @@
-// URL de base (on garde la même logique que ton premier fichier)
 let HOST_URL = ".."; 
 
 let DataMovie = {};

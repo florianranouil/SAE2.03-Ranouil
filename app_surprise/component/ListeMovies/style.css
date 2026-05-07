@@ -1,35 +1,37 @@
-/* ===== CONTAINER ===== */
 .liste {
     width: 100%;
-    padding: 1.5rem;
+    padding: 1rem; 
     margin: 0 auto;
     box-sizing: border-box;
 }
 
-/* ===== GRILLE MOBILE FIRST ===== */
+
 .liste__list {
     display: grid;
-    grid-template-columns: 1fr; /* 1 colonne sur mobile */
-    gap: 1.5rem;
-    margin-top: 6rem;
+    grid-template-columns: repeat(auto-fill, minmax(9rem, 1fr)); /* cartes plus petites */
+    gap: 0.8rem;
+    margin-top: 4rem;
     list-style: none;
     padding: 0;
-    justify-items: center; /* centre les cartes */
+    justify-content: center; 
+    justify-items: center;   
+    padding-left: 10.5rem;      
+    padding-right: 10.5rem;    
 }
 
-/* ===== CARTE ===== */
+
 .liste__item {
     background: var(--color-dark-blue);
     border-radius: 0.4rem;
     width: 100%;
-    max-width: 14rem; /* largeur idéale mobile */
+    
     text-align: left;
     transition: transform 0.2s ease;
 }
 
-/* ===== IMAGE ===== */
+
 .liste__image {
-    width: 100%; /* responsive */
+    width: 100%;
     aspect-ratio: 2 / 3;
     object-fit: cover;
     border-radius: 0.2rem;
@@ -37,51 +39,58 @@
     cursor: pointer;
 }
 
-/* ===== TITRES ===== */
 .liste__titre-film {
-    margin-top: 1rem;
+    margin-top: 0.8rem;
     margin-bottom: 0.1rem;
-    font-size: 1rem;
+    font-size: 0.85rem;
     font-weight: 600;
     color: var(--color-white);
 }
 
 .liste__director-film {
     margin-top: 0.2rem;
-    font-size: 0.8rem;
+    font-size: 0.7rem;
     font-weight: 600;
     color: var(--color-gray-light);
 }
 
-/* ===== TITRES DE SECTION ===== */
 .liste__list > h2 {
     grid-column: 1 / -1;
     justify-self: start;
-    margin: 3rem 0 1rem 0;
-    font-size: 2rem;
+    margin: 2rem 0 1rem 0;
+    font-size: 1.8rem;
     font-weight: bold;
     color: var(--color-white);
+    
+}
 
-    /* ALIGNEMENT PARFAIT AVEC LA PREMIÈRE AFFICHE */
-    max-width: 13rem;
-    padding-left: 2rem;
+@media (min-width: 600px) {
+    .liste__list {
+        grid-template-columns: repeat(auto-fill, minmax(9rem, 1fr));
+        gap: 0.8rem ;
+        padding-left: 4rem;
+        padding-right: 4rem;
+    }
+
+
 }
 
 
-/* ===== TABLETTE ===== */
-@media (min-width: 600px) {
+@media (min-width: 900px) {
     .liste__list {
-        grid-template-columns: repeat(2, 1fr);
-        justify-items: center;
+        grid-template-columns: repeat(5, 1fr); 
+        gap: 0.8rem; 
+        padding-left: 10.5rem;
+        padding-right: 10.5rem;
     }
 }
 
-/* ===== DESKTOP  ===== */
-@media (min-width: 900px) {
+
+
+@media (max-width: 480px) {
     .liste__list {
-        grid-template-columns: repeat(auto-fill, minmax(13rem, 1fr));
-        max-width: 900px;
-        margin: 0 auto;
-        margin-top: 10rem;
+        padding-left: 1rem;   
+        padding-right: 1rem;
+        grid-template-columns: repeat(auto-fill, minmax(11rem, 1fr));
     }
 }

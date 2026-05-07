@@ -1,4 +1,3 @@
-/* ====== GRAND BANDEAU HEADER ====== */
 .movie-header {
     width: 100%;
     height: 28rem; 
@@ -9,15 +8,14 @@
     margin-bottom: 4rem;
 }
 
-/* ====== MOVIE DETAIL ====== */
 .movie-detail {
     width: 100%;
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 2rem 3rem;
+    padding-top: 8rem;
 }
 
-/* Layout principal */
 .movie-detail__top {
     display: flex;
     flex-direction: column;
@@ -25,7 +23,6 @@
     align-items: center;
 }
 
-/* Petite affiche (desktop) */
 .movie-detail__poster {
     width: 20rem;
     height: 30rem;
@@ -34,7 +31,6 @@
     box-shadow: 0 0 2rem rgba(0,0,0,0.4);
 }
 
-/* Texte */
 .movie-detail__content {
     width: 100%;
     text-align: left;
@@ -79,7 +75,6 @@
     box-shadow: 0 0 2rem rgba(0,0,0,0.4);
 }
 
-/* ====== MOBILE ====== */
 @media (max-width: 900px) {
 
     
@@ -97,7 +92,6 @@
         
     }
 
-    /* Layout mobile */
     .movie-detail__top {
         flex-direction: column;
         align-items: center;
@@ -109,7 +103,6 @@
     }
 }
 
-/* ====== DESKTOP ====== */
 @media (min-width: 900px) {
 
     .movie-detail__top {

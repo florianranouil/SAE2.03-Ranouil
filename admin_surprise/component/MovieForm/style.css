@@ -1,26 +1,24 @@
-/* ====== BLOCK : movie-form ====== */
 .movie-form {
-  width: 34rem; /* PLUS LARGE */
-  padding: 1.4rem; /* compact */
+  width: 34rem; 
+  padding: 1.4rem; 
   background: #fff;
   border-radius: 0.6rem;
   box-shadow: 0 0.3rem 1rem hsl(352, 100%, 34%);
   font-family: Arial, sans-serif;
-  /* CENTRAGE */
-  margin: 2rem auto; /* auto = centré */
+  margin: 2rem auto; 
 }
 
 
 .movie-form__title {
   text-align: left;
-  font-size: 1.6rem; /* un peu plus petit */
+  font-size: 1.6rem; 
   margin-bottom: 1rem;
   color: #333;
 }
 
-/* ====== ELEMENTS ====== */
+
 .movie-form__group {
-  margin-bottom: 0.8rem; /* réduit */
+  margin-bottom: 0.8rem; 
 }
 
 .movie-form__label {
@@ -34,7 +32,7 @@
 .movie-form__input,
 .movie-form__select {
   width: 100%;
-  padding: 0.6rem; /* compact */
+  padding: 0.6rem; 
   font-size: 1.2rem;
   border: 0.1rem solid #ccc;
   border-radius: 0.5rem;
@@ -47,7 +45,7 @@
   outline: none;
 }
 
-/* ====== BUTTON ====== */
+
 .movie-form__submit {
   width: 100%;
   padding: 0.8rem;

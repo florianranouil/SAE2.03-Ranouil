@@ -144,7 +144,6 @@
         content.innerHTML += SelecProfils.formatMany(data);
       };
 
-      // 🔥 DÉMARRAGE
       C.start = function () {
 
         // Injection NavBar
@@ -154,8 +153,9 @@
           "C.handlerProfil()"
         );
 
-        // 🔥 AJOUT ICI → effet scroll
         NavBar.initScrollEffect();
+
+        NavBar.initBurger();
 
         C.loadProfils();
       };
